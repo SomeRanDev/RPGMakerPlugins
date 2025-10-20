@@ -17,10 +17,18 @@
  * Choices are:    left    |    center    |    right
  * @default center
  *
+ * @param Extend Skills Help
+ * @desc If 'true', then the Skill Help Window will be updated for the extend skills.
+ * @default true
+ *
+ * @param Max Rows
+ * @desc This sets the maximum amount of visible rows that may appear in the extend window.
+ * @default 6
+ *
  * @help
  *
  * Skill Extender
- * Version 1.01
+ * Version 1.04
  * SumRndmDde
  *
  *
@@ -87,7 +95,7 @@ SRD.SkillExtender = SRD.SkillExtender || {};
 SRD.NotetagGetters = SRD.NotetagGetters || [];
 
 var Imported = Imported || {};
-Imported["SumRndmDde Skill Extender"] = 1.01; 
+Imported["SumRndmDde Skill Extender"] = 1.04; 
 
 function Window_SkillExtend() {
 	this.initialize.apply(this, arguments);
@@ -106,6 +114,8 @@ const params = PluginManager.parameters('SRD_SkillExtender');
 _.defaultStyle = String(params['Default Style']).trim().toLowerCase() === 'simple';
 _.defaultWidth = parseInt(params['Default Width']);
 _.defaultAlign = String(params['Default Align']).trim().toLowerCase();
+_.extendHelp = String(params['Extend Skills Help']).trim().toLowerCase() === 'true';
+_.maxRows = parseInt(params['Max Rows']);
 
 _.loadNotetags = function() {
 	const data = $dataSkills;
@@ -189,6 +199,7 @@ Scene_Battle.prototype.createSkillExtendWindow = function() {
 	this._skillExtend = new Window_SkillExtend();
 	this._skillExtend.setHandler('ok', this.commandSkillExtend.bind(this));
 	this._skillExtend.setHandler('cancel', this.cancelSkillExtend.bind(this));
+	if(_.extendHelp) this._skillExtend.setHelpWindow(this._helpWindow);
 	this.addWindow(this._skillExtend);
 };
 
@@ -252,6 +263,7 @@ Scene_Skill.prototype.createSkillExtendWindow = function() {
 	this._skillExtend = new Window_SkillExtend();
 	this._skillExtend.setHandler('ok', this.onItemOk.bind(this));
 	this._skillExtend.setHandler('cancel', this.cancelSkillExtend.bind(this));
+	if(_.extendHelp) this._skillExtend.setHelpWindow(this._helpWindow);
 	this.addWindow(this._skillExtend);
 };
 
@@ -330,7 +342,7 @@ Window_SkillExtend.prototype.maxCols = function() {
 
 Window_SkillExtend.prototype.updatePlacement = function() {
 	this.makeItemList();
-	this.height = this.fittingHeight(this._data.length);
+	this.height = this.fittingHeight(this._data.length.clamp(1, _.maxRows));
 	this.x = (Graphics.boxWidth - this.width) / 2;
 	this.y = (Graphics.boxHeight - this.height) / 2;
 };

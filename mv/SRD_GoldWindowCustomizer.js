@@ -60,6 +60,18 @@
  * @desc The label shown when there is no bgm.
  * @default None
  *
+ * @param Time Label
+ * @desc The label shown for the time.
+ * @default (Time)
+ *
+ * @param ON Label
+ * @desc The label shown ON switches.
+ * @default ON
+ *
+ * @param OFF Label
+ * @desc The label shown OFF switches.
+ * @default OFF
+ *
  * @param == Information ==
  * @default
  *
@@ -316,7 +328,7 @@
  * @help
  *
  * Gold Window Customizer
- * Version 1.05
+ * Version 1.06
  * SumRndmDde
  *
  *
@@ -380,7 +392,7 @@ var SRD = SRD || {};
 SRD.GoldWindowCustomizer = SRD.GoldWindowCustomizer || {};
 
 var Imported = Imported || {};
-Imported["SumRndmDde Gold Window Customizer"] = 1.00;
+Imported["SumRndmDde Gold Window Customizer"] = 1.06;
 
 (function(_) {
 
@@ -399,6 +411,9 @@ Imported["SumRndmDde Gold Window Customizer"] = 1.00;
 	_.dmapLabel = String(params['D-Map Label']);
 	_.bgmLabel = String(params['BGM Label']);
 	_.nobgmLabel = String(params['No BGM Label']);
+	_.timeLabel = String(params['Time Label'] || "(Time)");
+	_.onLabel = String(params['ON Label'] || "ON");
+	_.offLabel = String(params['OFF Label'] || "OFF");
 
 	_.info = [];
 	for(var i = 0; i < 50; i++) {
@@ -547,7 +562,7 @@ Imported["SumRndmDde Gold Window Customizer"] = 1.00;
 				this.drawCurrencyValue($gameVariables.value(id), $dataSystem.variables[id], x, y + (i * lh), width, 'override');
 			} else if(_.info[i].match(/switch:\s*(\d+)/i)) {
 				var id = parseInt(RegExp.$1);
-				var str = ($gameSwitches.value(id)) ? "ON" : "OFF";
+				var str = ($gameSwitches.value(id)) ? _.onLabel : _.offLabel;
 				this.drawCurrencyValue(str, $dataSystem.switches[id], x, y + (i * lh), width, 'override');
 			} else if(_.info[i].match(/battles/i)) {
 				this.drawCurrencyValue($gameSystem.battleCount(), _.battleLabel, x, y + (i * lh), width, 'override');
@@ -604,7 +619,7 @@ Imported["SumRndmDde Gold Window Customizer"] = 1.00;
 				this.drawText(eval(RegExp.$1), x, y + (i * lh), width, 'left');
 			} else if(_.info[i].match(/game-time/i)) {
 				this.contents.fontSize = _.size;
-				this.drawCurrencyValue($gameSystem.playtimeText(), " " + "(Time)", x, y + (i * lh), width, 'override');
+				this.drawCurrencyValue($gameSystem.playtimeText(), " " + _.timeLabel, x, y + (i * lh), width, 'override');
 				//this.drawText($gameSystem.playtimeText(), x, y + (i * lh), width, 'left');
 				this._systemTimeisRefreshing = true;
 			}

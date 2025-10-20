@@ -3,25 +3,29 @@
  * @author SumRndmDde
  *
  * @param Connect Editor
- * @desc If 'true', the Editor Window will be "connected" to the main window.
+ * @type boolean
+ * @desc If ON, the Editor Window will be "connected" to the main window.
  * @default true
  *
  * @param Auto Open Window
- * @desc If 'true', the game window will automatically open the Editor Window is opened.
+ * @type boolean
+ * @desc If ON, the game window will automatically open the Editor Window is opened.
  * @default false
  *
  * @param Auto Move Window
- * @desc If 'true', the game window will automatically be moved to the side when Editor Window is opened.
+ * @type boolean
+ * @desc If ON, the game window will automatically be moved to the side when Editor Window is opened.
  * @default true
  *
- * @param Menu Editor Ban List
+ * @param Menu Editor Exempt List
+ * @type text[]
  * @desc This is a list of all the windows that are not allowed to be manipulated using the Menu Editor
- * @default Window_BattleLog, Window_MapName
+ * @default ["Window_BattleLog","Window_MapName"]
  *
  * @help
  *
  * Super Tools Engine
- * Version 1.22
+ * Version 1.31
  * SumRndmDde
  *
  *
@@ -150,7 +154,7 @@ SRD.SuperToolsEngine = SRD.SuperToolsEngine || {};
 SRD.NotetagGetters = SRD.NotetagGetters || [];
 
 var Imported = Imported || {};
-Imported["SumRndmDde Super Tools Engine"] = 1.22;
+Imported["SumRndmDde Super Tools Engine"] = 1.31;
 
 var $dataWindows = {};
 var $dataBasicEX = {};
@@ -176,6 +180,17 @@ function WindowManager() {
 	throw new Error('Great job. WindowManager is a static class! ʕ·ᴥ·　ʔ');
 }
 
+// Fix the flag check for 1.6 editor and 1.5 or below project
+if(process.versions['node-webkit'] >= "0.13.0" && Utils.RPGMAKER_VERSION < "1.6.0") {
+
+Utils.isOptionValid = function(name) {
+	if (location.search.slice(1).split('&').contains(name)) {return 1;};
+	if (typeof nw !== "undefined" && nw.App.argv.length > 0 && nw.App.argv[0].split('&').contains(name)) {return 1;};
+	return 0;
+};
+
+}
+
 (function(_) {
 
 "use strict";
@@ -186,12 +201,24 @@ function WindowManager() {
 
 const params = PluginManager.parameters('SRD_SuperToolsEngine');
 
+if(!params['Menu Editor Exempt List']) {
+
+alert('SRD_SuperToolsEngine has updated its parameter system!\nPlease reinstall the plugin or update the parameters!');
+return;
+
+}
+
 _.connect = String(params['Connect Editor']).trim().toLowerCase() === 'true';
 _.move = String(params['Auto Move Window']).trim().toLowerCase() === 'true';
 _.open = String(params['Auto Open Window']).trim().toLowerCase() === 'true';
-_.banList = String(params['Menu Editor Ban List']).split(/\s*,\s*/);
+_.banList = JSON.parse(params['Menu Editor Exempt List']);
 
 _.isPlaytest = Utils.isOptionValid('test') && Utils.isNwjs();
+_.isNewNWjs = process.versions['node-webkit'] >= "0.13.0";
+
+if(_.isPlaytest && _.isNewNWjs) {
+	if(!require('fs').existsSync("supertoolsengine.html")) require('fs').writeFileSync("supertoolsengine.html", "<!DOCTYPE html><html><head><title></title></head><body></body></html>");
+}
 
 _.pad = function(value) {
 	return (value < 10) ? "0" + value : value;
@@ -468,9 +495,11 @@ MakerManager.initManager = function() {
 MakerManager.openMaker = function() {
 	if(this._window) this._window.close(true);
 	this.createWindow();
-	this.moveWindow();
-	this.setupWindow();
-	this._window.on('loaded', this.onWindowLoad.bind(this));
+	if(!_.isNewNWjs) {
+		this.moveWindow();
+		this.setupWindow();
+		this._window.on('loaded', this.onWindowLoad.bind(this));
+	}
 };
 
 MakerManager.closeMaker = function() {
@@ -484,15 +513,31 @@ MakerManager.deleteMaker = function() {
 
 MakerManager.createWindow = function() {
 	const gui = require('nw.gui');
-	this._window = gui.Window.open('', {
-		title: "Super Tools Engine  -  Core Editor  |  SumRndmDde",
-		width: 600,
-		height: 680,
-		resizable: false,
-		toolbar: false,
-		icon: "www/icon/icon.png"
-	});
-	this._window.setShowInTaskbar(false);
+	if(_.isNewNWjs) {
+		gui.Window.open('supertoolsengine.html', {
+			title: "Super Tools Engine  -  Core Editor  |  SumRndmDde",
+			width: 600,
+			height: 680,
+			resizable: false,
+			icon: "www/icon/icon.png"
+		}, function(newWindow) {
+			this._window = newWindow;
+			this._window.setShowInTaskbar(false);
+			this.moveWindow();
+			this.setupWindow();
+			this._window.on('loaded', this.onWindowLoad.bind(this));
+		}.bind(this));
+	} else {
+		this._window = gui.Window.open('', {
+			title: "Super Tools Engine  -  Core Editor  |  SumRndmDde",
+			width: 600,
+			height: 680,
+			resizable: false,
+			toolbar: false,
+			icon: "www/icon/icon.png"
+		});
+		this._window.setShowInTaskbar(false);
+	}
 };
 
 MakerManager.moveWindow = function() {
@@ -547,23 +592,48 @@ MakerManager.onFinish = function() {
 	}
 };
 
+if(Imported["SumRndmDde Game Upgrade"]) {
+
+MakerManager.onWindowClose = function() {
+	GameWindowManager.onWindowClose();
+};
+
+_.GameWindowManager_closeGame = GameWindowManager.closeGame;
+GameWindowManager.closeGame = function() {
+	if(_.isPlaytest && MakerManager.window) {
+		MakerManager.closeTheWindows.call(GameWindowManager.window);
+	} else {
+		_.GameWindowManager_closeGame.apply(this, arguments);
+	}
+};
+
+} else {
+
+MakerManager.onWindowClose = function() {
+	MakerManager.closeTheWindows.call(this);
+};
+
+}
+
+MakerManager.closeTheWindows = function() {
+	DebugManager.deleteQuickSave();
+	if(MakerManager.window) {
+		if(window.confirm('Are you sure you wish to close the game while Editor Window is active? Your changes will not be saved.')) {
+			MakerManager.window.close(true);
+			this.close(true);
+		}
+	} else {
+		this.close(true);
+	}
+};
+
 MakerManager.setupGameWindow = function() {
 	const gui = require('nw.gui');
 	const win = gui.Window.get();
 
 	//Set up closing
 	win.removeAllListeners('close');
-	win.on('close', function() {
-		DebugManager.deleteQuickSave();
-		if(MakerManager.window) {
-			if(window.confirm('Are you sure you wish to close the game while Editor Window is active? Your changes will not be saved.')) {
-				MakerManager.window.close(true);
-				this.close(true);
-			}
-		} else {
-			this.close(true);
-		}
-	});
+	win.on('close', this.onWindowClose.bind(win));
 
 	//Set up connection
 	if(_.connect) {
@@ -1266,12 +1336,14 @@ MakerManager.initManager();
 //-----------------------------------------------------------------------------
 
 FileManager.filePath = function(location) {
+	if(!Utils.isNwjs()) return '';
 	const path = require('path');
 	const base = path.dirname(process.mainModule.filename);
 	return path.join(base, location);
 };
 
 FileManager.saveData = function(variable, filename) {
+	if(!Utils.isNwjs()) return;
 	if(this.dataPath === undefined) this.dataPath = this.filePath('data/');
 	const fs = require('fs');
 	const data = JSON.stringify(variable);
@@ -1280,6 +1352,7 @@ FileManager.saveData = function(variable, filename) {
 };
 
 FileManager.checkDataExists = function(filename, info) {
+	if(!Utils.isNwjs()) return;
 	info = info || "[]";
 	if(this.dataPath === undefined) this.dataPath = this.filePath('data/');
 	const fs = require('fs');
@@ -1290,6 +1363,7 @@ FileManager.checkDataExists = function(filename, info) {
 };
 
 FileManager.getFileList = function(section, folder) {
+	if(!Utils.isNwjs()) return [];
 	const result = [];
 	const fs = require('fs');
 	const location = this.filePath(`img/SumRndmDde/${section}/${folder}/`);
@@ -2923,8 +2997,9 @@ Scene_Boot.prototype.openMaker = function() {
 		DebugManager.removeReopener();
 		const temp = _.move;
 		_.move = false;
+		_.isReopening = true;
 		SceneManager.openMaker();
-		if(temp) MakerManager.window.moveTo(window.screenX + Graphics.boxWidth + 6, window.screenY);
+		if(temp && !_.isNewNWjs) MakerManager.window.moveTo(window.screenX + Graphics.boxWidth + 6, window.screenY);
 		_.move = temp;
 		return;
 	}

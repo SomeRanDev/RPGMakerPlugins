@@ -1,5 +1,5 @@
 /*:
- * @plugindesc (v3.02) This Plugin allows you to have more control over your TP system and have a dynamic Max TP stat.
+ * @plugindesc (v3.03) This Plugin allows you to have more control over your TP system and have a dynamic Max TP stat.
  * @author SumRndmDde
  *
  * @param Minimum Max TP
@@ -63,7 +63,7 @@
  * @help
  *
  * TP Upgrade
- * Version 3.02
+ * Version 3.03
  * SumRndmDde
  *
  *
@@ -383,6 +383,12 @@ DataManager.loadnotetagsTPUpgradeTPCostGain = function(data) {
 // Game_BattlerBase
 //-----------------------------------------------------------------------------
 
+SRD.TP.TPUpgrade._Game_BattlerBase_initialize = Game_BattlerBase.prototype.initialize;
+Game_BattlerBase.prototype.initialize = function() {
+    SRD.TP.TPUpgrade._Game_BattlerBase_initialize.call(this);
+    this._baseMaxTp = 0;
+};
+
 Object.defineProperties(Game_BattlerBase.prototype, {
     // Max TP
     mtp: { get: function() { return this.maxTp(); }, configurable: true },
@@ -536,6 +542,7 @@ Game_Actor.prototype.initialTP = function() {
 
 	//Round Max TP
 	initTp = Math.round(initTp);
+	initTp += this._baseMaxTp;
     return (initTp < 0) ? 0 : initTp;
 };
 
@@ -591,6 +598,7 @@ Game_Actor.prototype.maxTp = function() {
 
 	//Round Max TP
 	maxTp = (maxTp <= 0) ? 1 : Math.round(maxTp);
+	maxTp += this._baseMaxTp;
     return maxTp.clamp(SRD.TP.minMTP, SRD.TP.maxMTP);
 };
 

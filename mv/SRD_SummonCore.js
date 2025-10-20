@@ -52,7 +52,7 @@
  * @help
  *
  * Summon Core
- * Version 1.05
+ * Version 1.06
  * SumRndmDde
  *
  *
@@ -165,7 +165,7 @@ SRD.SummonCore = SRD.SummonCore || {};
 SRD.NotetagGetters = SRD.NotetagGetters || [];
 
 var Imported = Imported || {};
-Imported["SumRndmDde Summon Core"] = 1.05;
+Imported["SumRndmDde Summon Core"] = 1.06;
 
 function Game_Summon() {
 	this.initialize.apply(this, arguments);
@@ -406,6 +406,7 @@ Game_Summon.prototype.initialize = function(actorId, level, turns, introAni, exi
 	this._turns = turns;
 	this._introAnimation = introAni;
 	this._exitAnimation = exitAni;
+	this.updateSkillsForLevel();
 	this.setMasterId(masterId || 0);
 	this.recoverAll();
 };
@@ -423,6 +424,17 @@ Game_Summon.prototype.initMembers = function() {
 	this._baseSkillType = '';
 	this._battleSprite = null;
 };
+
+Game_Summon.prototype.updateSkillsForLevel = function() {
+	const cls = this.currentClass();
+	if(cls) {
+		cls.learnings.forEach(function(learning) {
+			if (learning.level <= this._level) {
+				this.learnSkill(learning.skillId);
+			}
+		}, this);
+	}
+}
 
 Game_Summon.prototype.battleSprite = function() {
 	return this._battleSprite;

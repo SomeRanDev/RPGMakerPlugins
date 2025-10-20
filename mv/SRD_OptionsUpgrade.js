@@ -84,7 +84,23 @@
  * @param Help Window Y
  * @desc The Y position of the Help Window.
  * @default 0
-  *
+ *
+ *
+ * @param == Window Color Text ==
+ * @default
+ *
+ * @param Window Red Text
+ * @desc The text for the option that controls the window color's red amount.
+ * @default Window Red
+ *
+ * @param Window Green Text
+ * @desc The text for the option that controls the window color's green amount.
+ * @default Window Green
+ *
+ * @param Window Blue Text
+ * @desc The text for the option that controls the window color's blue amount.
+ * @default Window Blue
+ *
  * @param == Option 1 ==
  * @default
  *
@@ -888,7 +904,7 @@
  * @help
  *
  * Options Upgrade
- * Version 1.01
+ * Version 1.02
  * SumRndmDde
  *
  *
@@ -957,7 +973,7 @@ var SRD = SRD || {};
 SRD.OptionsUpgrade = SRD.OptionsUpgrade || {};
 
 var Imported = Imported || {};
-Imported["SumRndmDde Options Upgrade"] = 1.01;
+Imported["SumRndmDde Options Upgrade"] = 1.02;
 
 function Window_OptionsCategory() {
 	this.initialize.apply(this, arguments);
@@ -990,6 +1006,10 @@ _.optionsWidth = String(params['Options Window Width']);
 
 _.helpX = String(params['Help Window X']);
 _.helpY = String(params['Help Window Y']);
+
+_.windowRedText = String(params['Window Red Text'] || "Window Red");
+_.windowGreenText = String(params['Window Green Text'] || "Window Green");
+_.windowBlueText = String(params['Window Blue Text'] || "Window Blue");
 
 _.commands = [];
 _.comCategories = [];
@@ -1176,9 +1196,9 @@ Window_Options.prototype.makeCommandList = function() {
 	this.addGeneralOptions();
 	this.addVolumeOptions();
 	if(_.addColors) {
-		this.addCommand('Window Red', 'windowRed');
-		this.addCommand('Window Green', 'windowGreen');
-		this.addCommand('Window Blue', 'windowBlue');
+		this.addCommand(_.windowRedText, 'windowRed');
+		this.addCommand(_.windowGreenText, 'windowGreen');
+		this.addCommand(_.windowBlueText, 'windowBlue');
 	}
 };
 

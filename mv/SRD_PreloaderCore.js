@@ -16,10 +16,14 @@
  * @default Load Complete!
  *
  * @param Use Fade Transitions
+ * @type boolean
  * @desc If 'true', a fade will occur between the Title and Preloading scenes.
  * @default true
  *
  * @param Load Font Size
+ * @type number
+ * @min 0
+ * @decimals 0
  * @desc The font size of the text when displaying the loading url.
  * @default 28
  *
@@ -31,353 +35,230 @@
  * @desc The color used for the main part of the loading gauge.
  * @default rgba(255, 0, 0, 0.4)
  *
- * @param == Audio Preloads ==
- * @default
+ * @param Custom Preloads
+ * @type Struct<CustomPreloads>[]
+ * @desc A list of all custom preloads for the game.
+ * @default []
+ *
+ * @param Audio Preloads
+ * @default ====================================
  *
  * @param Cache Audio
  * @desc Keeps previous audio objects stored for quick retrieval.
  * List all the audio folders that will use caching.
  * @default bgm, bgs, me
+ * @parent Audio Preloads
  *
  * @param Preload BGM
- * @desc Determines which BGM are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
+ * @desc Determines which BGM are preloaded.
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default important
+ * @parent Audio Preloads
  *
  * @param Preload BGS
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which BGS are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default none
+ * @parent Audio Preloads
  *
  * @param Preload ME
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which ME are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default important
+ * @parent Audio Preloads
  *
  * @param Preload SE
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which SE are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default none
+ * @parent Audio Preloads
  *
- * @param == Image Preloads ==
- * @default
+ * @param Image Preloads
+ * @default ====================================
  *
  * @param Preload System
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which system images are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default none
+ * @parent Image Preloads
  *
  * @param Preload Animations
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which animations are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default none
+ * @parent Image Preloads
  *
  * @param Preload Battlebacks1
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which battlebacks1 are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default none
+ * @parent Image Preloads
  *
  * @param Preload Battlebacks2
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which battlebacks2 are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default none
+ * @parent Image Preloads
  *
  * @param Preload Characters
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which characters are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default none
+ * @parent Image Preloads
  *
  * @param Preload Enemies
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which enemies are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default none
+ * @parent Image Preloads
  *
  * @param Preload Faces
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which faces are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default important
+ * @parent Image Preloads
  *
  * @param Preload Parallaxes
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which parallaxes are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default none
+ * @parent Image Preloads
  *
  * @param Preload Pictures
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which pictures are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default none
+ * @parent Image Preloads
  *
  * @param Preload SV_Actors
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which SV actors are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default none
+ * @parent Image Preloads
  *
  * @param Preload SV_Enemies
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which SV enemies are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default none
+ * @parent Image Preloads
  *
  * @param Preload Tilesets
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which tilesets are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default important
+ * @parent Image Preloads
  *
  * @param Preload Titles1
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which titles1 are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default none
+ * @parent Image Preloads
  *
  * @param Preload Titles2
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
  * @desc Determines which titles2 are preloaded. Choices are:
- *  all  |  important  |  custom: f1, f2, ...  |  none
+ * Type in "custom: f1, f2, ..." to use custom files.
  * @default none
- *
- * @param == Custom Path 1 ==
- * @default
- *
- * @param Preload Path 1
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 1
- * @desc Determines which images are preloaded from Path 1.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 2 ==
- * @default
- *
- * @param Preload Path 2
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 2
- * @desc Determines which images are preloaded from Path 2.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 3 ==
- * @default
- *
- * @param Preload Path 3
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 3
- * @desc Determines which images are preloaded from Path 3.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 4 ==
- * @default
- *
- * @param Preload Path 4
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 4
- * @desc Determines which images are preloaded from Path 4.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 5 ==
- * @default
- *
- * @param Preload Path 5
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 5
- * @desc Determines which images are preloaded from Path 5.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default 
- *
- * @param == Custom Path 6 ==
- * @default
- *
- * @param Preload Path 6
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 6
- * @desc Determines which images are preloaded from Path 6.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 7 ==
- * @default
- *
- * @param Preload Path 7
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 7
- * @desc Determines which images are preloaded from Path 7.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 8 ==
- * @default
- *
- * @param Preload Path 8
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 8
- * @desc Determines which images are preloaded from Path 8.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 9 ==
- * @default
- *
- * @param Preload Path 9
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 9
- * @desc Determines which images are preloaded from Path 9.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 10 ==
- * @default
- *
- * @param Preload Path 10
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 10
- * @desc Determines which images are preloaded from Path 10.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 11 ==
- * @default
- *
- * @param Preload Path 11
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 11
- * @desc Determines which images are preloaded from Path 11.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 12 ==
- * @default
- *
- * @param Preload Path 12
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 12
- * @desc Determines which images are preloaded from Path 12.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 13 ==
- * @default
- *
- * @param Preload Path 13
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 13
- * @desc Determines which images are preloaded from Path 13.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 14 ==
- * @default
- *
- * @param Preload Path 14
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 14
- * @desc Determines which images are preloaded from Path 14.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 15 ==
- * @default
- *
- * @param Preload Path 15
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 15
- * @desc Determines which images are preloaded from Path 15.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 16 ==
- * @default
- *
- * @param Preload Path 16
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 16
- * @desc Determines which images are preloaded from Path 16.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 17 ==
- * @default
- *
- * @param Preload Path 17
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 17
- * @desc Determines which images are preloaded from Path 17.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 18 ==
- * @default
- *
- * @param Preload Path 18
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 18
- * @desc Determines which images are preloaded from Path 18.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 19 ==
- * @default
- *
- * @param Preload Path 19
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 19
- * @desc Determines which images are preloaded from Path 19.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
- *
- * @param == Custom Path 20 ==
- * @default
- *
- * @param Preload Path 20
- * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
- * @default
- *
- * @param Preload Images 20
- * @desc Determines which images are preloaded from Path 20.
- *  all  |  important  |  custom: f1, f2, ...  |  none
- * @default
+ * @parent Image Preloads
  *
  * @help
  *
  * Preloader Core
- * Version 1.02
+ * Version 1.10
  * SumRndmDde
  *
+ *
+ * This plugin requires the Game Upgrade plugin:
+ * http://sumrndm.site/game-upgrade/
  *
  * This plugin allows developers to preload specific audio and images before 
  * running the game through a new pre-title scene.
@@ -459,11 +340,29 @@
  *
  */
 
+/*~struct~CustomPreloads:
+ *
+ * @param Preload Path
+ * @desc This is a custom folder path to reference the images to be preloaded in the /img/ folder.
+ * @default
+ *
+ * @param Preload Images
+ * @type combo
+ * @option all
+ * @option important
+ * @option custom:
+ * @option none
+ * @desc Determines which images are preloaded from Preload Path.
+ * Type in "custom: f1, f2, ..." to use custom files.
+ * @default
+ *
+ */
+
 var SRD = SRD || {};
 SRD.PreloaderCore = SRD.PreloaderCore || {};
 
 var Imported = Imported || {};
-Imported["SumRndmDde Preloader Core"] = 1.02;
+Imported["SumRndmDde Preloader Core"] = 1.10;
 
 function Scene_Preload() {
 	this.initialize.apply(this, arguments);
@@ -474,12 +373,35 @@ function Scene_Preload() {
 "use strict";
 
 //-----------------------------------------------------------------------------
+// SRD.Requirements
+//-----------------------------------------------------------------------------
+
+_.alertNeedGameUpgrade = function() {
+	alert("The 'SRD_GameUpgrade' plugin is required for using the 'SRD_PreloaderCore' plugin.");
+	if(confirm("Do you want to open the download page to 'SRD_GameUpgrade'?")) {
+		window.open('http://sumrndm.site/game-upgrade/');
+	}
+};
+
+if(!Imported["SumRndmDde Game Upgrade"]) {
+	_.alertNeedGameUpgrade();
+	return;
+}
+
+//-----------------------------------------------------------------------------
 // SRD.Preloader
 //-----------------------------------------------------------------------------
 
 const params = PluginManager.parameters('SRD_PreloaderCore');
 
+if(params['Preload Path 20']) {
+	alert("Please update the parameters for 'SRD_PreloaderCore'!");
+	return;
+}
+
 _.isNwjs = Utils.isNwjs();
+_.is130 = Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= '1.3.0';
+_.is150 = Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= '1.5.0';
 
 _.background = String(params['Custom Background']);
 _.format = String(params['Loading Text']);
@@ -510,16 +432,7 @@ _.preloadTilesets = String(params['Preload Tilesets']).trim();
 _.preloadTitles1 = String(params['Preload Titles1']).trim();
 _.preloadTitles2 = String(params['Preload Titles2']).trim();
 
-_.customPaths = [];
-_.customImages = [];
-for(let i = 1; i <= 5; i++) {
-	const path = String(params['Preload Path ' + i]);
-	const images = String(params['Preload Images ' + i]);
-	if(path.trim().length > 0) {
-		_.customPaths.push(path);
-		_.customImages.push(images);
-	}
-}
+_.customPreloads = SRD.parse(params['Custom Preloads']);
 
 _.hasPreloaded = false;
 
@@ -565,8 +478,8 @@ _.audioFolders = [];
 _.audioReady = false;
 
 _.getAudioPath = function() {
-	var path = require('path');
-	var base = path.dirname(process.mainModule.filename);
+	const path = require('path');
+	const base = path.dirname(process.mainModule.filename);
 	return path.join(base, 'audio/');
 };
 
@@ -637,8 +550,8 @@ _.imageFolders = [];
 _.imageReady = false;
 
 _.getImagePath = function() {
-	var path = require('path');
-	var base = path.dirname(process.mainModule.filename);
+	const path = require('path');
+	const base = path.dirname(process.mainModule.filename);
 	return path.join(base, 'img/');
 };
 
@@ -801,8 +714,8 @@ _.setupImagePreloads = function() {
 	this.preloadImageFolder('tilesets', this.preloadTilesets);
 	this.preloadImageFolder('titles1', this.preloadTitles1);
 	this.preloadImageFolder('titles2', this.preloadTitles2);
-	for(let i = 0; i < this.customPaths.length; i++) {
-		this.preloadImageFolder(this.customPaths[i], this.customImages[i]);
+	for(let i = 0; i < this.customPreloads.length; i++) {
+		this.preloadImageFolder(this.customPreloads[i]['Preload Path'], this.customPreloads[i]['Preload Images']);
 	}
 	this.imageReady = true;
 };
@@ -973,6 +886,10 @@ Scene_Preload.prototype.updateImage = function() {
 		const path = "img/" + type + "/";
 		const bitmap = ImageManager.loadBitmap(path, picture, hue, true);
 		bitmap.addLoadListener(this._loadListener);
+		if(_.is150 && ImageManager.precache) {
+			const key = ImageManager._generateCacheKey(path + encodeURIComponent(picture) + '.png', hue);
+			ImageManager.precache.setItem(key, bitmap);
+		}
 		this._goalIndex++;
 		this.refreshSubtitle();
 		const hueStr = (hue) ? " [" + hue + "H]" : "";
@@ -1027,12 +944,32 @@ Scene_Preload.prototype.stop = function() {
 }
 
 //-----------------------------------------------------------------------------
+// ImageManager
+//-----------------------------------------------------------------------------
+
+if(_.is150) {
+
+ImageManager.precache = new CacheMap(ImageManager);
+
+_.ImageManager_loadNormalBitmap = ImageManager.loadNormalBitmap;
+ImageManager.loadNormalBitmap = function(path, hue) {
+	const key = ImageManager._generateCacheKey(path, hue);
+	const bitmap = this.precache.getItem(key);
+	if (!bitmap) {
+		return _.ImageManager_loadNormalBitmap.apply(this, arguments);
+	}
+	return bitmap;
+};
+
+}
+
+//-----------------------------------------------------------------------------
 // AudioManager
 //-----------------------------------------------------------------------------
 
 _.AudioManager_createBuffer = AudioManager.createBuffer;
 
-if(Utils.RPGMAKER_VERSION >= '1.3.0') {
+if(_.is130) {
 
 AudioManager.cache = new CacheMap(AudioManager);
 AudioManager.createBuffer = function(folder, name) {

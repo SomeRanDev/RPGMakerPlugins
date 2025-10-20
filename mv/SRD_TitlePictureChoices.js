@@ -2,587 +2,85 @@
  * @plugindesc Gives developers the capability to add animated pictures as choice commands for the title command window.
  * @author SumRndmDde
  *
+ * @param Image Data
+ * @type struct<Image>[]
+ * @desc The data for all the title command images.
+ * @default ["{\"Image\":\"NewGame\",\"Symbol\":\"newGame\",\"X Position\":\"\",\"Y Position\":\"\"}","{\"Image\":\"Continue\",\"Symbol\":\"continue\",\"X Position\":\"\",\"Y Position\":\"\"}","{\"Image\":\"Options\",\"Symbol\":\"options\",\"X Position\":\"\",\"Y Position\":\"\"}","{\"Image\":\"Shutdown\",\"Symbol\":\"shutdown\",\"X Position\":\"\",\"Y Position\":\"\"}"]
+ *
+ * @param Settings
+ * @default ====================================
+ *
  * @param Highlight Frame
+ * @type boolean
  * @desc If 'true', command images will be split into two halfs: 
  * the left for unselected, and the right for selected.
  * @default true
+ * @parent Settings
  *
  * @param Disable Opacity
+ * @type number
+ * @min 0
+ * @decimals 0
  * @desc This is the opacity of commands that are disabled.
  * @default 170
+ * @parent Settings
  *
  * @param Animation Duration
+ * @type number
+ * @min 0
+ * @decimals 0
  * @desc The duration, in frames, it takes for the highlight animation to occur.
  * @default 7
+ * @parent Settings
  *
  * @param Scale Animation
+ * @type number
+ * @min 0
+ * @decimals 2
  * @desc The scale growth that occurs on highlighted commands.
  * 0 = no growth  |  0.2 = 20% growth  |  0.5 = 50% growth
- * @default 0.2
+ * @default 0.20
+ * @parent Settings
  *
  * @param X Animation
+ * @type number
+ * @min 0
+ * @decimals 0
  * @desc The X shift that occurs on highlighted commands.
  * Positive numbers move it to the right; negative to the left.
  * @default 0
+ * @parent Settings
  *
  * @param Y Animation
+ * @type number
+ * @min 0
+ * @decimals 0
  * @desc The Y shift that occurs on highlighted commands.
  * Positive numbers move it down; negative move it up.
  * @default 0
+ * @parent Settings
  *
  * @param Line Height
+ * @type number
+ * @min 0
+ * @decimals 0
  * @desc This is the line height of the Title Command. Increase this if the commands seem too close together or vise versa.
  * @default 60
- *
- * @param == Command 1 ==
- * @default
- *
- * @param Com. 1 Image
- * @desc The image used for Command 1.
- * Place in /img/SumRndmDde/title/
- * @default NewGame
- *
- * @param Com. 1 X
- * @desc The X position of Command 1.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 1 Y
- * @desc The Y position of Command 1.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 2 ==
- * @default
- *
- * @param Com. 2 Image
- * @desc The image used for Command 2.
- * Place in /img/SumRndmDde/title/
- * @default Continue
- *
- * @param Com. 2 X
- * @desc The X position of Command 2.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 2 Y
- * @desc The Y position of Command 2.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 3 ==
- * @default
- *
- * @param Com. 3 Image
- * @desc The image used for Command 3.
- * Place in /img/SumRndmDde/title/
- * @default Options
- *
- * @param Com. 3 X
- * @desc The X position of Command 3.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 3 Y
- * @desc The Y position of Command 3.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 4 ==
- * @default
- *
- * @param Com. 4 Image
- * @desc The image used for Command 4.
- * Place in /img/SumRndmDde/title/
- * @default Shutdown
- *
- * @param Com. 4 X
- * @desc The X position of Command 4.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 4 Y
- * @desc The Y position of Command 4.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 5 ==
- * @default
- *
- * @param Com. 5 Image
- * @desc The image used for Command 5.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 5 X
- * @desc The X position of Command 5.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 5 Y
- * @desc The Y position of Command 5.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 6 ==
- * @default
- *
- * @param Com. 6 Image
- * @desc The image used for Command 6.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 6 X
- * @desc The X position of Command 6.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 6 Y
- * @desc The Y position of Command 6.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 7 ==
- * @default
- *
- * @param Com. 7 Image
- * @desc The image used for Command 7.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 7 X
- * @desc The X position of Command 7.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 7 Y
- * @desc The Y position of Command 7.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 8 ==
- * @default
- *
- * @param Com. 8 Image
- * @desc The image used for Command 8.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 8 X
- * @desc The X position of Command 8.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 8 Y
- * @desc The Y position of Command 8.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 9 ==
- * @default
- *
- * @param Com. 9 Image
- * @desc The image used for Command 9.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 9 X
- * @desc The X position of Command 9.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 9 Y
- * @desc The Y position of Command 9.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 10 ==
- * @default
- *
- * @param Com. 10 Image
- * @desc The image used for Command 10.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 10 X
- * @desc The X position of Command 10.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 10 Y
- * @desc The Y position of Command 10.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 11 ==
- * @default
- *
- * @param Com. 11 Image
- * @desc The image used for Command 11.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 11 X
- * @desc The X position of Command 11.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 11 Y
- * @desc The Y position of Command 11.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 12 ==
- * @default
- *
- * @param Com. 12 Image
- * @desc The image used for Command 12.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 12 X
- * @desc The X position of Command 12.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 12 Y
- * @desc The Y position of Command 12.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 13 ==
- * @default
- *
- * @param Com. 13 Image
- * @desc The image used for Command 13.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 13 X
- * @desc The X position of Command 13.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 13 Y
- * @desc The Y position of Command 13.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 14 ==
- * @default
- *
- * @param Com. 14 Image
- * @desc The image used for Command 14.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 14 X
- * @desc The X position of Command 14.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 14 Y
- * @desc The Y position of Command 14.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 15 ==
- * @default
- *
- * @param Com. 15 Image
- * @desc The image used for Command 15.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 15 X
- * @desc The X position of Command 15.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 15 Y
- * @desc The Y position of Command 15.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 16 ==
- * @default
- *
- * @param Com. 16 Image
- * @desc The image used for Command 16.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 16 X
- * @desc The X position of Command 16.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 16 Y
- * @desc The Y position of Command 16.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 17 ==
- * @default
- *
- * @param Com. 17 Image
- * @desc The image used for Command 17.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 17 X
- * @desc The X position of Command 17.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 17 Y
- * @desc The Y position of Command 17.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 18 ==
- * @default
- *
- * @param Com. 18 Image
- * @desc The image used for Command 18.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 18 X
- * @desc The X position of Command 18.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 18 Y
- * @desc The Y position of Command 18.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 19 ==
- * @default
- *
- * @param Com. 19 Image
- * @desc The image used for Command 19.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 19 X
- * @desc The X position of Command 19.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 19 Y
- * @desc The Y position of Command 19.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 20 ==
- * @default
- *
- * @param Com. 20 Image
- * @desc The image used for Command 20.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 20 X
- * @desc The X position of Command 20.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 20 Y
- * @desc The Y position of Command 20.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 21 ==
- * @default
- *
- * @param Com. 21 Image
- * @desc The image used for Command 21.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 21 X
- * @desc The X position of Command 21.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 21 Y
- * @desc The Y position of Command 21.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 22 ==
- * @default
- *
- * @param Com. 22 Image
- * @desc The image used for Command 22.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 22 X
- * @desc The X position of Command 22.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 22 Y
- * @desc The Y position of Command 22.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 23 ==
- * @default
- *
- * @param Com. 23 Image
- * @desc The image used for Command 23.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 23 X
- * @desc The X position of Command 23.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 23 Y
- * @desc The Y position of Command 23.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 24 ==
- * @default
- *
- * @param Com. 24 Image
- * @desc The image used for Command 24.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 24 X
- * @desc The X position of Command 24.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 24 Y
- * @desc The Y position of Command 24.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 25 ==
- * @default
- *
- * @param Com. 25 Image
- * @desc The image used for Command 25.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 25 X
- * @desc The X position of Command 25.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 25 Y
- * @desc The Y position of Command 25.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 26 ==
- * @default
- *
- * @param Com. 26 Image
- * @desc The image used for Command 26.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 26 X
- * @desc The X position of Command 26.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 26 Y
- * @desc The Y position of Command 26.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 27 ==
- * @default
- *
- * @param Com. 27 Image
- * @desc The image used for Command 27.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 27 X
- * @desc The X position of Command 27.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 27 Y
- * @desc The Y position of Command 27.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 28 ==
- * @default
- *
- * @param Com. 28 Image
- * @desc The image used for Command 28.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 28 X
- * @desc The X position of Command 28.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 28 Y
- * @desc The Y position of Command 28.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 29 ==
- * @default
- *
- * @param Com. 29 Image
- * @desc The image used for Command 29.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 29 X
- * @desc The X position of Command 29.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 29 Y
- * @desc The Y position of Command 29.
- * Leave blank for the default position.
- * @default
- *
- * @param == Command 30 ==
- * @default
- *
- * @param Com. 30 Image
- * @desc The image used for Command 30.
- * Place in /img/SumRndmDde/title/
- * @default
- *
- * @param Com. 30 X
- * @desc The X position of Command 30.
- * Leave blank for the default position.
- * @default
- *
- * @param Com. 30 Y
- * @desc The Y position of Command 30.
- * Leave blank for the default position.
- * @default
+ * @parent Settings
  *
  * @help
  *
  * Title Picture Choices
- * Version 1.01
+ * Version 1.10
  * SumRndmDde
  *
  *
- * This Plugin requires the Title Command Customizer (SRD_TitleCommandCustomizer)
+ * This plugin requires the Game Upgrade plugin:
+ * http://sumrndm.site/game-upgrade/
+ *
+ * This Plugin also requires the Title Command Customizer:
  * http://sumrndm.site/title-command-customizer/
+ *
  *
  * This plugin gives developers the capability to add animated pictures as 
  * choice commands for the title command window.
@@ -593,13 +91,15 @@
  * ==============================================================================
  *
  * If you wish to set an command to use a certain picture, first place the 
- * picture within /img/SumRndmDde/title/. Next go to the "Command X" within
- * SRD_TitlePictureChoices that corresponds to the "Command X" from
- * SRD_TitleCommandCustomizer. Finally, input the file's name within the 
- * parameter.
+ * picture within /img/SumRndmDde/title/.
  *
- * If you wish to set a specific X or Y coordinate for the picture choice, 
- * input it in the corresponding "Com. [ ] X" and "Com. [ ] Y" parameters.
+ * Next, add a new item to the "Image Data" Parameter list.
+ *
+ * Set "Image" to the name of the image file.
+ * Set "Symbol" to the symbol the command the image should be used for.
+ *
+ * You can optionally define a specific position for the command by
+ * setting the "X Position" and "Y Position" Parameters also.
  *
  *
  * ==============================================================================
@@ -621,11 +121,34 @@
  *
  */
 
+/*~struct~Image:
+ *
+ * @param Image
+ * @desc The image used for the command.
+ * Place in /img/SumRndmDde/title/
+ * @default
+ *
+ * @param Symbol
+ * @desc The symbol used to connect the image to the command.
+ * @default
+ *
+ * @param X Position
+ * @desc The X position of the command.
+ * Leave blank for the default position.
+ * @default
+ *
+ * @param Y Position
+ * @desc The Y position of the command.
+ * Leave blank for the default position.
+ * @default
+ *
+ */
+
 var SRD = SRD || {};
 SRD.TitlePictureChoices = SRD.TitlePictureChoices || {};
 
 var Imported = Imported || {};
-Imported["SumRndmDde Title Picture Choices"] = 1.01;
+Imported["SumRndmDde Title Picture Choices"] = 1.10;
 
 function Sprite_TitlePictureChoice() {
 	this.initialize.apply(this, arguments);
@@ -636,10 +159,34 @@ function Sprite_TitlePictureChoice() {
 "use strict";
 
 //-----------------------------------------------------------------------------
+// SRD.Requirements
+//-----------------------------------------------------------------------------
+
+_.alertNeedGameUpgrade = function() {
+	alert("The 'SRD_GameUpgrade' plugin is required for using the 'SRD_TitlePictureChoices' plugin.");
+	if(confirm("Do you want to open the download page to 'SRD_GameUpgrade'?")) {
+		window.open('http://sumrndm.site/game-upgrade/');
+	}
+};
+
+if(!Imported["SumRndmDde Game Upgrade"]) {
+	_.alertNeedGameUpgrade();
+	return;
+}
+
+if(SRD.requirePlugin(
+	'SumRndmDde Title Command Customizer', 
+	'SRD_TitlePictureChoices', 
+	'SRD_TitleCommandCustomizer', 
+	'http://sumrndm.site/title-command-customizer/')) return;
+
+//-----------------------------------------------------------------------------
 // SRD.TitlePictureChoices
 //-----------------------------------------------------------------------------
 
 const params = PluginManager.parameters('SRD_TitlePictureChoices');
+
+_.data = SRD.parse(params['Image Data'], true);
 
 _.meetsRequirements = !!Imported["SumRndmDde Title Command Customizer"];
 
@@ -667,42 +214,17 @@ _.loadImage = function(filename, hue) {
 };
 
 _.setup = function() {
-	const tempImages = []
-	const tempPositions = [];
-	for(let i = 1; i <= 30; i++) {
-		const img = String(params['Com. ' + i + ' Image']);
-		const x   = String(params['Com. ' + i + ' X']);
-		const y   = String(params['Com. ' + i + ' Y']);
-		if(img.trim().length > 0) {
-			tempImages.push(img);
-			if(x.trim().length > 0 && y.trim().length > 0) {
-				tempPositions.push([parseInt(x), parseInt(y)]);
-			} else {
-				tempPositions.push(null);
-			}
+	for(let i = 0; i < _.data.length; i++) {
+		const data = _.data[i];
+		const symbol = data['Symbol'];
+		_.comImages[symbol] = data['Image'];
+		if(data['X Position'] && data['Y Position']) {
+			_.comPositions[symbol] = [data['X Position'], data['Y Position']];
 		}
-	}
-
-	for(let i = 0; i < __.commands.length; i++) {
-		_.comImages[__.commands[i].symbol] = tempImages[i];
-		if(tempPositions[i]) {
-			_.comPositions[__.commands[i].symbol] = tempPositions[i];
-		}
-	}
-};
-
-_.alertNeedTitleCommandCustomizer = function() {
-	alert("The 'SRD_TitleCommandCustomizer' plugin is required for using the 'SRD_TitlePictureChoices' plugin.");
-	if(confirm("Do you want to open the download page to 'SRD_TitleCommandCustomizer'?")) {
-		window.open('http://sumrndm.site/title-command-customizer/');
 	}
 };
 
 _.setup();
-
-if(!_.meetsRequirements) {
-	_.alertNeedTitleCommandCustomizer();
-}
 
 //-----------------------------------------------------------------------------
 // Window_TitleCommand
@@ -791,7 +313,7 @@ Window_TitleCommand.prototype.update = function() {
 		}
 	}
 };
-_.opacity
+
 _.Window_TitleCommand_close = Window_TitleCommand.prototype.close;
 Window_TitleCommand.prototype.close = function() {
 	for(var i = 0; i < this._spriteChoices.length; i++) {

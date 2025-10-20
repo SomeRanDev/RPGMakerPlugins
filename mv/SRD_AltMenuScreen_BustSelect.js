@@ -145,7 +145,7 @@
  * @help
  *
  * Alternative Menu Screen: Bust Select
- * Version 1.01
+ * Version 1.02
  * SumRndmDde
  *
  *
@@ -263,52 +263,47 @@
 	var notetagsLoaded = false;
 	var _DataManager_isDatabaseLoaded = DataManager.isDatabaseLoaded;
 	DataManager.isDatabaseLoaded = function() {
-	    if(!_DataManager_isDatabaseLoaded.call(this)) return false;
-	    if(!notetagsLoaded) {
-	    	for(var i = 1; i < $dataActors.length; i++) {
-	    		if($dataActors[i].note.match(/<Menu\s*Bust\s*:\s*(.*)\s*>/im)) {
-	    			$dataActors[i].ams_bs_bust = RegExp.$1;
-	    		}
-	    		if($dataActors[i].note.match(/<Menu\s*Bust\s*X\s*:\s*(.*)\s*>/im)) {
-	    			$dataActors[i].ams_bs_x = parseInt(RegExp.$1);
-	    		}
-	    		if($dataActors[i].note.match(/<Menu\s*Bust\s*Y\s*:\s*(.*)\s*>/im)) {
-	    			$dataActors[i].ams_bs_y = parseInt(RegExp.$1);
-	    		}
-	    		if($dataActors[i].note.match(/<Menu\s*Bust\s*Width\s*:\s*(.*)\s*>/im)) {
-	    			$dataActors[i].ams_bs_w = parseInt(RegExp.$1);
-	    		}
-	    		if($dataActors[i].note.match(/<Menu\s*Bust\s*Height\s*:\s*(.*)\s*>/im)) {
-	    			$dataActors[i].ams_bs_h = parseInt(RegExp.$1);
-	    		}
-	    	}
-	    	notetagsLoaded = true;
-	    }
-	    return true;
+		if(!_DataManager_isDatabaseLoaded.call(this)) return false;
+		if(!notetagsLoaded) {
+			for(var i = 1; i < $dataActors.length; i++) {
+				if($dataActors[i].note.match(/<Menu\s*Bust\s*:\s*(.*)\s*>/im)) {
+					$dataActors[i].ams_bs_bust = RegExp.$1;
+				}
+				if($dataActors[i].note.match(/<Menu\s*Bust\s*X\s*:\s*(.*)\s*>/im)) {
+					$dataActors[i].ams_bs_x = parseInt(RegExp.$1);
+				}
+				if($dataActors[i].note.match(/<Menu\s*Bust\s*Y\s*:\s*(.*)\s*>/im)) {
+					$dataActors[i].ams_bs_y = parseInt(RegExp.$1);
+				}
+				if($dataActors[i].note.match(/<Menu\s*Bust\s*Width\s*:\s*(.*)\s*>/im)) {
+					$dataActors[i].ams_bs_w = parseInt(RegExp.$1);
+				}
+				if($dataActors[i].note.match(/<Menu\s*Bust\s*Height\s*:\s*(.*)\s*>/im)) {
+					$dataActors[i].ams_bs_h = parseInt(RegExp.$1);
+				}
+			}
+			notetagsLoaded = true;
+		}
+		return true;
 	};
 	if(!ImageManager.loadSumRndmDdeMB) {
 		ImageManager.loadSumRndmDdeMB = function(filename, hue) {
-	        return this.loadBitmap('img/SumRndmDde/menu/', filename, hue, true);
-	    };
+			return this.loadBitmap('img/SumRndmDde/menu/', filename, hue, true);
+		};
 	}
 	var _Scene_Menu_create = Scene_Menu.prototype.create;
 	Scene_Menu.prototype.create = function() {
-	    _Scene_Menu_create.call(this);
-	    this.createHPWindow(this._statusWindow);
-	    this.createSVBattler(this._statusWindow);
-	    this._statusWindow.x = eval(bwX);
+		_Scene_Menu_create.call(this);
+		this.createHPWindow(this._statusWindow);
+		this.createSVBattler(this._statusWindow);
+		this._statusWindow.x = eval(bwX);
 		this._statusWindow.y = eval(bwY);
 		this._commandWindow.x = eval(comX);
 		this._commandWindow.y = eval(comY);
-		this._goldWindow.x = eval(goldX);//this._hpWindow.x;
-	    this._goldWindow.y = eval(goldY);//this._statusWindow.y;
-	    this._hpWindow.x = eval(hpX);//this._commandWindow.x;
-	    this._hpWindow.y = eval(hpY);
-	    //var distance = (this._commandWindow.y - (this._goldWindow.y + this._goldWindow.height));
-		//this._hpWindow.y = (distance / 2) - (this._hpWindow.height / 2) + (this._goldWindow.y + this._goldWindow.height);
-		//this._hpWindow.y = ((this._commandWindow.y - (this._goldWindow.y + this._goldWindow.height)) / 2) - (this._hpWindow.height / 2) + (this._goldWindow.y + this._goldWindow.height);
-		//this._svWindow.x = Graphics.width - 128;
-		//this._svWindow.y = this._hpWindow.y;
+		this._goldWindow.x = eval(goldX);
+		this._goldWindow.y = eval(goldY);
+		this._hpWindow.x = eval(hpX);
+		this._hpWindow.y = eval(hpY);
 		this._svWindow.x = eval(batXW);
 		this._svWindow.y = eval(batYH);
 	};
@@ -321,104 +316,106 @@
 		}
 	};
 	Scene_Menu.prototype.createHPWindow = function(window) {
-	    this._hpWindow = new Window_HPWindow(0, 0, window);
-	    this.addWindow(this._hpWindow);
+		this._hpWindow = new Window_HPWindow(0, 0, window);
+		this.addWindow(this._hpWindow);
 	};
 	Scene_Menu.prototype.createSVBattler = function(window) {
-	    this._svWindow = new Window_SVBattler(0, 0, window);
-	    if(sv) this.addWindow(this._svWindow);
+		this._svWindow = new Window_SVBattler(0, 0, window);
+		if(sv) this.addWindow(this._svWindow);
 	};
 	Window_MenuCommand.prototype.windowWidth = function() {
-	    return (Graphics.width / 2) - 40;
+		return (Graphics.width / 2) - 40;
 	};
 	Window_MenuCommand.prototype.maxCols = function() {
-	    return col;
+		return col;
 	};
 	Window_MenuCommand.prototype.numVisibleRows = function() {
-	    return row;
+		return row;
 	};
 	Window_MenuCommand.prototype.itemTextAlign = function() {
-	    return 'center';
+		return 'center';
 	};
 	var _Window_MenuStatus_loadImages = Window_MenuStatus.prototype.loadImages;
 	Window_MenuStatus.prototype.loadImages = function() {
-	    _Window_MenuStatus_loadImages.call(this);
-	    $gameParty.members().forEach(function(actor) {
-	    	if(actor.actor().ams_bs_bust) {
-	        	ImageManager.loadSumRndmDdeMB(actor.actor().ams_bs_bust);
-	        }
-	    }, this);
+		_Window_MenuStatus_loadImages.call(this);
+		$gameParty.members().forEach(function(actor) {
+			if(actor.actor().ams_bs_bust) {
+				ImageManager.loadSumRndmDdeMB(actor.actor().ams_bs_bust);
+			}
+		}, this);
 	};
 	Window_MenuStatus.prototype.windowWidth = function() {
 		return eval(bwW);
 	};
 	Window_MenuStatus.prototype.windowHeight = function() {
-	    return eval(bwH);
+		return eval(bwH);
 	};
 	Window_MenuStatus.prototype.numVisibleRows = function() {
 		return bustRows;
 	};
 	Window_MenuStatus.prototype.maxCols = function() {
-	    return bustCols;
+		return bustCols;
 	};
 	Window_MenuStatus.prototype.drawItem = function(index) {
-	    this.drawItemBackground(index);
-	    this.drawItemImage(index);
-	    //this.drawItemStatus(index);
+		this.drawItemBackground(index);
+		this.drawItemImage(index);
+		//this.drawItemStatus(index);
 	};
 	Window_MenuStatus.prototype.drawItemImage = function(index) {
-	    var actor = $gameParty.members()[index];
-	    var rect = this.itemRect(index);
-	    this.changePaintOpacity(actor.isBattleMember());
-	    var x = (actor.actor().ams_bs_x) ? actor.actor().ams_bs_x : bustX;
-	    var y = (actor.actor().ams_bs_y) ? actor.actor().ams_bs_y : bustY;
-	    var w = (actor.actor().ams_bs_w) ? actor.actor().ams_bs_w : -1;
-	    var h = (actor.actor().ams_bs_h) ? actor.actor().ams_bs_h : -1;
-	    this.drawBust(actor, rect.x + x, rect.y + y, w, h);
-	    this.changePaintOpacity(true);
+		var actor = $gameParty.members()[index];
+		var rect = this.itemRect(index);
+		this.changePaintOpacity(actor.isBattleMember());
+		var x = (actor.actor().ams_bs_x) ? actor.actor().ams_bs_x : bustX;
+		var y = (actor.actor().ams_bs_y) ? actor.actor().ams_bs_y : bustY;
+		var w = (actor.actor().ams_bs_w) ? actor.actor().ams_bs_w : -1;
+		var h = (actor.actor().ams_bs_h) ? actor.actor().ams_bs_h : -1;
+		this.drawBust(actor, rect.x + x, rect.y + y, w, h);
+		this.changePaintOpacity(true);
 	};
 	Window_MenuStatus.prototype.drawBust = function(actor, x, y, width, height) {
-	    var bitmap = ImageManager.loadSumRndmDdeMB(actor.actor().ams_bs_bust);
-	    width = (width < 0) ? bitmap.width : width;
-	    height = (height < 0) ? bitmap.height : height;
-	    this.contents.blt(bitmap, 0, 0, bitmap.width, bitmap.height, x, y, width, height);
+		var bitmap = ImageManager.loadSumRndmDdeMB(actor.actor().ams_bs_bust);
+		bitmap.addLoadListener(function() {
+			width = (width < 0) ? bitmap.width : width;
+			height = (height < 0) ? bitmap.height : height;
+			this.contents.blt(bitmap, 0, 0, bitmap.width, bitmap.height, x, y, width, height);
+		}.bind(this));
 	};
 	var _Window_MenuStatus_deselect = Window_MenuStatus.prototype.deselect;
 	Window_MenuStatus.prototype.deselect = function() {
-	    _Window_MenuStatus_deselect.call(this);
-	    this._index = 0;
+		_Window_MenuStatus_deselect.call(this);
+		this._index = 0;
 	};
 	function Window_HPWindow() {
-	    this.initialize.apply(this, arguments);
+		this.initialize.apply(this, arguments);
 	}
 	Window_HPWindow.prototype = Object.create(Window_Base.prototype);
 	Window_HPWindow.prototype.constructor = Window_HPWindow;
 	Window_HPWindow.prototype.initialize = function(x, y, win) {
-	    var width = this.windowWidth();
-	    var height = this.windowHeight();
-	    Window_Base.prototype.initialize.call(this, x, y, width, height);
-	    this._window = win;
-	    this._index = 0;
-	    this._name = '';
-	    this._actor = $gameParty.members()[this._index];
-	    this.refresh();
+		var width = this.windowWidth();
+		var height = this.windowHeight();
+		Window_Base.prototype.initialize.call(this, x, y, width, height);
+		this._window = win;
+		this._index = 0;
+		this._name = '';
+		this._actor = $gameParty.members()[this._index];
+		this.refresh();
 	};
 	Window_HPWindow.prototype.windowWidth = function() {
-	    return hpWidth;
+		return hpWidth;
 	};
 	Window_HPWindow.prototype.windowHeight = function() {
 		if(mpBar && tpBar) return this.fittingHeight(4);
 		if(mpBar || tpBar) return this.fittingHeight(3);
-	    return this.fittingHeight(2);
+		return this.fittingHeight(2);
 	};
 	Window_HPWindow.prototype.refresh = function() {
-	    var x = this.textPadding();
-	    var y = 0;
-	    var width = this.contents.width - this.textPadding() * 2;
-	    var actor = $gameParty.members()[this._index];
-	    this._name = actor.name();
-	    this.contents.clear();
-	    this.drawActorName(actor, x, y);
+		var x = this.textPadding();
+		var y = 0;
+		var width = this.contents.width - this.textPadding() * 2;
+		var actor = $gameParty.members()[this._index];
+		this._name = actor.name();
+		this.contents.clear();
+		this.drawActorName(actor, x, y);
 		this.drawActorHp(actor, x, y + this.lineHeight(), width);
 		var i = 2;
 		if(mpBar) {
@@ -430,49 +427,49 @@
 	};
 	var _Window_HPWindow_update = Window_HPWindow.prototype.update;
 	Window_HPWindow.prototype.update = function() {
-	    _Window_HPWindow_update.call(this);
-	    if(this._window.index() >= 0 && this._index != this._window.index()) {
-	    	this._index = this._window.index();
-	    	this.refresh();
-	    }
-	    if(this._name != $gameParty.members()[this._index]) {
-	    	this.refresh();
-	    }
+		_Window_HPWindow_update.call(this);
+		if(this._window.index() >= 0 && this._index != this._window.index()) {
+			this._index = this._window.index();
+			this.refresh();
+		}
+		if(this._name != $gameParty.members()[this._index]) {
+			this.refresh();
+		}
 	};
 	Window_HPWindow.prototype.open = function() {
-	    this.refresh();
-	    Window_Base.prototype.open.call(this);
+		this.refresh();
+		Window_Base.prototype.open.call(this);
 	};
 	function Window_SVBattler() {
-	    this.initialize.apply(this, arguments);
+		this.initialize.apply(this, arguments);
 	}
 	Window_SVBattler.prototype = Object.create(Window_Base.prototype);
 	Window_SVBattler.prototype.constructor = Window_SVBattler;
 	Window_SVBattler.prototype.initialize = function(x, y, win) {
-	    var width = this.windowWidth();
-	    var height = this.windowHeight();
-	    Window_Base.prototype.initialize.call(this, x, y, width, height);
-	    this._window = win;
-	    this._index = 0;
-	    this._frame = 0;
-	    this._timer = 0;
-	    this.refresh();
+		var width = this.windowWidth();
+		var height = this.windowHeight();
+		Window_Base.prototype.initialize.call(this, x, y, width, height);
+		this._window = win;
+		this._index = 0;
+		this._frame = 0;
+		this._timer = 0;
+		this.refresh();
 	};
 	Window_SVBattler.prototype.windowWidth = function() {
-	    return eval(batW);
+		return eval(batW);
 	};
 	Window_SVBattler.prototype.windowHeight = function() {
-	    return eval(batH);
+		return eval(batH);
 	};
 	Window_SVBattler.prototype.refresh = function() {
-	    var x = this.textPadding();
-	    var y = 0;
-	    var width = this.contents.width - this.textPadding() * 2;
-	    var actor = $gameParty.members()[this._index];
-	    this.contents.clear();
-	    var pic = ImageManager.loadSvActor(actor.battlerName());
-        var a = this._frame * (pic.width / 9);
-        this.contents.blt(pic, a, 0, pic.width / 9, pic.height / 6, eval(batX), eval(batY));
+		var x = this.textPadding();
+		var y = 0;
+		var width = this.contents.width - this.textPadding() * 2;
+		var actor = $gameParty.members()[this._index];
+		this.contents.clear();
+		var pic = ImageManager.loadSvActor(actor.battlerName());
+		var a = this._frame * (pic.width / 9);
+		this.contents.blt(pic, a, 0, pic.width / 9, pic.height / 6, eval(batX), eval(batY));
 	};
 	var _Window_SVBattler_update = Window_SVBattler.prototype.update;
 	Window_SVBattler.prototype.update = function() {
@@ -486,12 +483,12 @@
 			this._timer = 0;
 		}
 		if(this._window.index() >= 0 && this._index != this._window.index()) {
-	    	this._index = this._window.index();
-	    }
+			this._index = this._window.index();
+		}
 		this.refresh();
-    }
+	}
 	Window_SVBattler.prototype.open = function() {
-	    this.refresh();
-	    Window_Base.prototype.open.call(this);
+		this.refresh();
+		Window_Base.prototype.open.call(this);
 	};
 })();

@@ -88,7 +88,7 @@
  * @help
  *
  * Stat Distribution
- * Version 1.06
+ * Version 1.07
  * SumRndmDde
  *
  *
@@ -239,7 +239,7 @@ SRD.PluginCommands = SRD.PluginCommands || {};
 SRD.NotetagGetters = SRD.NotetagGetters || [];
 
 var Imported = Imported || {};
-Imported["SumRndmDde Stat Distribution"] = 1.06;
+Imported["SumRndmDde Stat Distribution"] = 1.07;
 
 var $dataDistributeStats = {};
 
@@ -615,8 +615,8 @@ Game_Actor.prototype.levelUp = function() {
 _.Game_Actor_displayLevelUp = Game_Actor.prototype.displayLevelUp;
 Game_Actor.prototype.displayLevelUp = function(newSkills) {
 	_.Game_Actor_displayLevelUp.apply(this, arguments);
-	if(_.messsage && this._pointsGained) {
-		$gameMessage.add(_.messsage.format(this._pointsGained));
+	if(_.messsage && this._pointsGainedTemp) {
+		$gameMessage.add(_.messsage.format(this._pointsGainedTemp));
 		this._pointsGainedTemp = 0;
 	}
 };

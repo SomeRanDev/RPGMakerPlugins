@@ -267,7 +267,7 @@ Imported["SumRndmDde Movie Credits"] = true;
 	var _Scene_Base_update = Scene_Base.prototype.update;
 	Scene_Base.prototype.update = function() {
 	    _Scene_Base_update.call(this);
-	    if($gameSystem.showCredits()) this.updateCredits();
+	    if($gameSystem && $gameSystem.showCredits()) this.updateCredits();
 	};
 
 	Scene_Base.prototype.updateCredits = function() {

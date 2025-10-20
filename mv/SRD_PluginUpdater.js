@@ -4,7 +4,7 @@
  * @help
  *
  * Plugin Updater
- * Version 1.11
+ * Version 1.21
  * SumRndmDde
  *
  *
@@ -53,7 +53,7 @@ var SRD = SRD || {};
 SRD.PluginUpdater = SRD.PluginUpdater || {};
 
 var Imported = Imported || {};
-Imported["SumRndmDde Plugin Updater"] = 1.11;
+Imported["SumRndmDde Plugin Updater"] = 1.21;
 
 function PluginUpdateManager() {
 	throw new Error('PluginUpdateManager is a static class! You\'ll learn lots about electricity there!');
@@ -116,14 +116,18 @@ MakerManager.refreshTable = function() {
 	_.MakerManager_refreshTable.apply(this, arguments);
 	const element = this.document.getElementById('LaunchDescription Plugin Updater');
 	element.innerHTML = '';
-	if(PluginUpdateManager._needsUpdate > 1) {
-		element.innerHTML += `<font color="#dd3333">${PluginUpdateManager._needsUpdate} plugins have updates available.</font><br>`;
-	} else if(PluginUpdateManager._needsUpdate === 1) {
-		element.innerHTML += `<font color="#dd3333">1 plugin has an update available.</font><br>`;
+	if(!PluginUpdateManager._pluginInfo || PluginUpdateManager._pluginInfo.length === 0) {
+		element.innerHTML = 'It appears no data has been obtained from online. If you are connected, this may be a parsing error. Please try again later!';
 	} else {
-		element.innerHTML += `<font color="#33bb33">All plugins are up to date!</font><br>`;
+		if(PluginUpdateManager._needsUpdate > 1) {
+			element.innerHTML += `<font color="#dd3333">${PluginUpdateManager._needsUpdate} plugins have updates available.</font><br>`;
+		} else if(PluginUpdateManager._needsUpdate === 1) {
+			element.innerHTML += `<font color="#dd3333">1 plugin has an update available.</font><br>`;
+		} else {
+			element.innerHTML += `<font color="#33bb33">All plugins are up to date!</font><br>`;
+		}
+		element.innerHTML += _.description;
 	}
-	element.innerHTML += _.description;
 };
 
 //-----------------------------------------------------------------------------
@@ -159,7 +163,7 @@ PluginUpdateManager.checkInternet = function() {
 PluginUpdateManager.checkForUpdates = function() {
 	if(!this._internet) return;
 	this.getInfo('https://raw.githubusercontent.com/SumRndmDde/PluginUpdater/master/SRD_PluginInfos.json');
-	this.getLog('https://raw.githubusercontent.com/SumRndmDde/PluginUpdater/master/SRD_PluginLog.txt');
+	this.getLog('https://raw.githubusercontent.com/SumRndmDde/PluginUpdater/master/SRD_PluginLog.json');
 };
 
 PluginUpdateManager.getInfo = function(url) {
@@ -177,7 +181,11 @@ PluginUpdateManager.getInfo = function(url) {
 };
 
 PluginUpdateManager.storeUpdates = function(content) {
-	this._infos = JsonEx.parse(content);
+	try {
+		this._infos = JsonEx.parse(content);
+	} catch(e) {
+		this._infos = {};
+	}
 };
 
 PluginUpdateManager.applyUpdates = function() {
@@ -220,7 +228,19 @@ PluginUpdateManager.getLog = function(url) {
 };
 
 PluginUpdateManager.storeLog = function(content) {
-	this._log = JsonEx.parse(content);
+	try {
+		this._log = JsonEx.parse(content);
+	} catch(e) {
+		this._log = [
+			[
+				"Error",
+				"0.00",
+				"There was an error parsing the online data",
+				"Please try again in an hour or so",
+				"If the error still persists, please contact <a href='therealrandomdudeyt@gmail.com'>SumRndmDde</a>!"
+			]
+		]
+	}
 };
 
 /*
@@ -288,7 +308,9 @@ PluginUpdateManager.refreshTable = function() {
 };
 
 PluginUpdateManager.getPluginTable = function() {
-	if(!this._pluginInfo) return '';
+	if(!this._pluginInfo) {
+		return '<a>No data found!<br>Please try again later!</a>';
+	}
 	let results = `<style>
 					td {
 						padding: 4px;

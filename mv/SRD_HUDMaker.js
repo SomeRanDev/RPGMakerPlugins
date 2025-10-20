@@ -2,16 +2,45 @@
  * @plugindesc Allows developers to create their own map-based HUD through an in-game GUI window!
  * @author SumRndmDde
  *
+ * @param HUD Configurations
+ * @type text[]
+ * @desc The list of extra HUD configurations that can be customized and toggled between using the plugin command.
+ * @default []
+ *
+ * @param Active Updating
+ * @desc If 'true', then HUD pieces will automatically update whenever properties are changed in the editor.
+ * @default false
+ *
  * @param Show During Events
  * @desc Sets what happens to the HUD during event processing.
  * Choices are:   hide    -    show    -    transparent
+ * @type select
+ * @option Hide
+ * @value hide
+ * @option Show
+ * @value show
+ * @option Transparent
+ * @value transparent
  * @default transparent
+ *
+ * @param Map Global Condition
+ * @desc This is a condition that must be true for the map HUD to be visible and active.
+ * @default
+ *
+ * @param Battle Global Condition
+ * @desc This is a condition that must be true for the battle HUD to be visible and active.
+ * @default
+ *
+ * @param Disable Delete Key
+ * @desc If 'true', the Delete key will no longer delete the currently highlighted piece.
+ * @type boolean
+ * @default true
  *
  * @help
  *
  * HUD Maker
- * Version 1.12
- * SumRndmDde
+ * Version 1.6
+ * sumrnDmDde
  *
  *
  * This plugin allows developers to create their own map-based HUD through 
@@ -41,6 +70,29 @@
  *
  *
  * ==============================================================================
+ *  HUD Configurations
+ * ==============================================================================
+ *
+ * Separate configurations for the HUD can be setup.
+ *
+ * ==============================================================================
+ *
+ * The following notetags can be used in a map in order to force a switch
+ * to said configuration upon map transition:
+ *
+ *     <Default HUD Configuration>
+ *     <HUD Configuration: [config-name]>
+ *
+ * ==============================================================================
+ *
+ * In order to switch the configuration during an event, the following
+ * plugin commands can be used:
+ *
+ *     SetDefaultHUDConfiguration
+ *     SetHUDConfiguration [config-name]
+ *
+ *
+ * ==============================================================================
  *  End of Help File
  * ==============================================================================
  * 
@@ -51,19 +103,20 @@
  * If you have questions, or if you enjoyed this Plugin, please check
  * out my YouTube channel!
  *
- * https://www.youtube.com/c/SumRndmDde
+ * https://www.youtube.com/c/sumrnDmDde
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ sumrnDmDde
  *
  */
 
 var SRD = SRD || {};
 SRD.HUDMaker = SRD.HUDMaker || {};
+SRD.NotetagGetters = SRD.NotetagGetters || [];
 
 var Imported = Imported || {};
-Imported["SumRndmDde HUD Maker"] = 1.12;
+Imported["SumRndmDde HUD Maker"] = 1.6;
 
 var $dataMapHUD = [];
 var $dataBattleHUD = [];
@@ -77,7 +130,51 @@ function BattleHUD() {
 }
 
 function HUDManager() {
-	throw new Error('Lol, what are you doing? HUDManager is a static class. Noob.');
+	throw new Error('please ju st end th e m ad ne s s  .');
+}
+
+function Sprite_HUDObject() {
+	this.initialize.apply(this, arguments);
+}
+
+function Sprite_HUDCursor() {
+	this.initialize.apply(this, arguments);
+}
+
+function Sprite_HUDText() {
+	this.initialize.apply(this, arguments);
+}
+
+function Sprite_HUDTextEx() {
+	this.initialize.apply(this, arguments);
+}
+
+function Sprite_HUDShape() {
+	this.initialize.apply(this, arguments);
+}
+
+function Sprite_HUDImage() {
+	this.initialize.apply(this, arguments);
+}
+
+function Sprite_HUDCodeImage() {
+	this.initialize.apply(this, arguments);
+}
+
+function Sprite_HUDImageGauge() {
+	this.initialize.apply(this, arguments);
+}
+
+function Sprite_HUDImageText() {
+	this.initialize.apply(this, arguments);
+}
+
+function Sprite_HUDFace() {
+	this.initialize.apply(this, arguments);
+}
+
+function Sprite_HUDGauge() {
+	this.initialize.apply(this, arguments);
 }
 
 (function(_) {
@@ -87,6 +184,8 @@ function HUDManager() {
 //-----------------------------------------------------------------------------
 // SRD.HUDMaker
 //-----------------------------------------------------------------------------
+
+_.isV150 = Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= '1.5.0';
 
 _.alertNeedSuperToolsEngine = function(update) {
 	if(update) {
@@ -108,7 +207,25 @@ if(!Imported["SumRndmDde Super Tools Engine"]) {
 }
 
 const params = PluginManager.parameters('SRD_HUDMaker');
+
+try {
+	_.configurations = JSON.parse(String(params['HUD Configurations'] || '[]'));
+} catch(e) {
+	_.configurations = [];
+}
+
+_.configurations = _.configurations.filter(function(value, index, _this) {
+	return value !== "" && _this.indexOf(value) === index;
+});
+
+_.active = String(params['Active Updating']).trim().toLowerCase() === 'true';
+
 _.duringEvents = String(params['Show During Events']).trim().toLowerCase();
+
+_.mapCondition = String(params['Map Global Condition']);
+_.battleCondition = String(params['Battle Global Condition']);
+
+_.deleteKey = !String(params['Disable Delete Key']).trim().toLowerCase() === 'true';
 
 _.isPlaytest = SRD.SuperToolsEngine.isPlaytest;
 _.mapFile = "MapHUD.json";
@@ -135,10 +252,25 @@ _.convertHex = function(hex, opacity){
 	return 'rgba(' + r + ',' + g + ',' + b + ',' + opacity/255 + ')';
 };
 
-_.blendNames = [];
-for(var key in PIXI.BLEND_MODES) {
-	_.blendNames.push(key);
-}
+_.blendNames = [
+	"Normal", 
+	"Add", 
+	"Multiply", 
+	"Screen", 
+	"Overlay", 
+	"Darken", 
+	"Lighten", 
+	"Color Dodge", 
+	"Color Burn", 
+	"Hard Light", 
+	"Soft Light", 
+	"Difference", 
+	"Exclusion", 
+	"Hue", 
+	"Saturation", 
+	"Color", 
+	"Luminosity"
+];
 
 _.getPicture = function(filename, hue) {
 	return ImageManager.loadBitmap('img/SumRndmDde/hud/pictures/', filename, hue, false);
@@ -156,8 +288,6 @@ _.getNumbers = function(filename, hue) {
 	return ImageManager.loadBitmap('img/SumRndmDde/hud/numbers/', filename, hue, false);
 };
 
-if(_.isPlaytest) {
-
 _.saveData = function() {
 	if(SceneManager._scene.constructor === Scene_Map) {
 		FileManager.saveData($dataMapHUD, _.mapFile);
@@ -167,21 +297,59 @@ _.saveData = function() {
 };
 
 _.checkDataExists = function() {
+	if(!_.isPlaytest) return;
 	FileManager.checkDataExists(_.mapFile);
 	FileManager.checkDataExists(_.battleFile);
 };
 
 _.getFileList = function(folder) {
-	return FileManager.getFileList('hud', folder);
+	if(!_.isPlaytest) return '';
+	try {
+		return FileManager.getFileList('hud', folder);
+	} catch(_) {
+		alert("img/SumRndmDde/hud/" + folder + " does not exist. Please create it.");
+		return [];
+	}
 };
 
 _.getFirstFile = function(folder) {
-	return FileManager.getFirstFile('hud', folder);
+	if(!_.isPlaytest) return '';
+	try {
+		return FileManager.getFirstFile('hud', folder);
+	} catch(_) {
+		alert("img/SumRndmDde/hud/" + folder + " does not exist. Please create it.");
+		return "";
+	}
 };
 
 _.checkDataExists();
 
+_.checkForCC = function() {
+	if(Imported["SumRndmDde Character Creator"] || Imported["SumRndmDde Character Creator EX"]) {
+		Sprite_HUDFace.prototype.refreshBitmap = function() {
+			this.bitmap.clear();
+			const color = _.convertHex(this["Background Color"], parseInt(this["Background Alpha"]));
+			this.bitmap.fillRect(0, 0, this.bitmap.width, this.bitmap.height, color);
+			if(this._actor.hasSetImage()) {
+				this.drawCustomFace(this._actor, 0, 0, this.bitmap.width, this.bitmap.height);
+			} else {
+				this.drawFace(this._actor.faceIndex(), parseInt(this["Width"]), parseInt(this["Height"]));
+			}
+			this.setupSnaps();
+		};
+
+		Sprite_HUDFace.prototype.drawCustomFace = function(actor, x, y, w, h) {
+			const width = Window_Base._faceWidth;
+			const height = Window_Base._faceHeight;
+			w = w || width;
+			h = h || height;
+			const bitmap = Window_Base.prototype.getCustomFace.call(this, actor);
+			this.bitmap.blt(bitmap, 0, 0, width, height, x, y, w, h);
+		};
+	}
 }
+
+SRD.NotetagGetters.push(_.checkForCC);
 
 //-----------------------------------------------------------------------------
 // Bitmap
@@ -205,29 +373,37 @@ Bitmap.prototype.drawOval = function(x, y, width, height, color) {
 _.WindowLayer_update = WindowLayer.prototype.update;
 WindowLayer.prototype.update = function() {
 	if($gameTemp.isManipulatingHud) return;
-    _.WindowLayer_update.apply(this, arguments);
+	_.WindowLayer_update.apply(this, arguments);
 };
 
 //-----------------------------------------------------------------------------
 // MapHUD
 //-----------------------------------------------------------------------------
 
-MapHUD.prototype = Object.create(PIXI.Container.prototype);
+MapHUD.prototype = Object.create(Stage.prototype);
 MapHUD.prototype.constructor = MapHUD;
 
 Object.defineProperty(MapHUD.prototype, 'opacity', {
-    get: function() {
-        return this.alpha * 255;
-    },
-    set: function(value) {
-        this.alpha = value.clamp(0, 255) / 255;
-    },
-    configurable: true
+	get: function() {
+		return this.alpha * 255;
+	},
+	set: function(value) {
+		this.alpha = value.clamp(0, 255) / 255;
+	},
+	configurable: true
 });
 
 MapHUD.prototype.initialize = function() {
-	PIXI.Container.call(this);
+	Stage.prototype.initialize.call(this);
+	this._isActive = false;
 	this.createHighlight();
+};
+
+MapHUD.prototype.clearAllContents = function() {
+	this.removeChildren();
+	if(this._highlight) {
+		this.addChild(this._highlight);
+	}
 };
 
 MapHUD.prototype.createHighlight = function() {
@@ -240,13 +416,30 @@ MapHUD.prototype.getHighlight = function() {
 };
 
 MapHUD.prototype.update = function() {
-	this.updateChildren();
-	if($gameMap && $gameTemp) {
-		this.updateVisibility();
+	this.updateActivity();
+	if(this._isActive || $gameTemp.isManipulatingHud) {
+		this.updateChildren();
+		if($gameMap && $gameTemp) {
+			this.updateVisibility();
+		}
+		if($gameTemp.isManipulatingHud) {
+			this.updateEditor();
+		}
 	}
-	if($gameTemp.isManipulatingHud) {
-		this.updateEditor();
+};
+
+MapHUD.prototype.updateActivity = function() {
+	try {
+		if(_.mapCondition) {
+			this._isActive = !!eval(_.mapCondition);
+		} else {
+			this._isActive = true;
+		}
+	} catch(e) {
+		this._isActive = true;
+		console.log("Map HUD ERROR:" + e);
 	}
+	this.visible = this._isActive || $gameTemp.isManipulatingHud;
 };
 
 MapHUD.prototype.updateVisibility = function() {
@@ -286,17 +479,14 @@ MapHUD.prototype.updateEditor = function() {
 	}
 };
 
-Tilemap.prototype.updateTransform = function() {
-	this._sortChildren();
-	PIXI.Container.prototype.updateTransform.apply(this, arguments);
-};
-
 MapHUD.prototype.refresh = function() {
 	this._sortChildren();
 };
 
 MapHUD.prototype._sortChildren = function() {
 	this.children.sort(this._compareChildOrder.bind(this));
+	this.removeChild(this._highlight);
+	this.addChildAt(this._highlight, this.children.indexOf(HUDManager.getSprite()) + 1);
 };
 
 MapHUD.prototype._compareChildOrder = function(a, b) {
@@ -315,6 +505,20 @@ MapHUD.prototype._compareChildOrder = function(a, b) {
 
 BattleHUD.prototype = Object.create(MapHUD.prototype);
 BattleHUD.prototype.constructor = BattleHUD;
+
+BattleHUD.prototype.updateActivity = function() {
+	try {
+		if(_.battleCondition) {
+			this._isActive = !!eval(_.battleCondition);
+		} else {
+			this._isActive = true;
+		}
+	} catch(e) {
+		this._isActive = true;
+		console.log("Battle HUD ERROR:" + e);
+	}
+	this.visible = this._isActive || $gameTemp.isManipulatingHud;
+};
 
 BattleHUD.prototype.updateVisibility = function() {
 	if($gameTemp.isManipulatingHud) return;
@@ -350,6 +554,23 @@ DataManager._databaseFiles.push(
 	{name: '$dataBattleHUD', src: _.battleFile}
 );
 
+if(!SRD.DataManager_isDatabaseLoaded) {
+
+SRD.notetagsLoaded = false;
+SRD.DataManager_isDatabaseLoaded = DataManager.isDatabaseLoaded;
+DataManager.isDatabaseLoaded = function() {
+	if(!SRD.DataManager_isDatabaseLoaded.apply(this, arguments)) return false;
+	if(!SRD.notetagsLoaded) {
+		SRD.NotetagGetters.forEach(function(func) {
+			func.call(this);
+		}, this);
+		SRD.notetagsLoaded = true;
+	}
+	return true;
+};
+
+}
+
 //-----------------------------------------------------------------------------
 // SceneManager
 //-----------------------------------------------------------------------------
@@ -365,12 +586,12 @@ SceneManager.onKeyDown = function(event) {
 SceneManager.onKeyDownHUDMaker = function(event) {
 	if(!event.ctrlKey && event.keyCode === 46) {
 		// Delete
-		if(HUDManager._currentId >= 0) {
+		if(_.deleteKey && HUDManager._currentId >= 0) {
 			HUDManager.onDelete();
 		}
 	} else if(event.ctrlKey && event.keyCode === 83) {
 		// Save
-		if(HUDManager._currentId >= 0) {
+		if(!_.active && HUDManager._currentId >= 0) {
 			HUDManager.refreshSprite();
 		}
 	}
@@ -382,7 +603,7 @@ SceneManager.onKeyDownHUDMaker = function(event) {
 
 _.BattleManager_isBusy = BattleManager.isBusy;
 BattleManager.isBusy = function() {
-    return _.BattleManager_isBusy.apply(this, arguments) || $gameTemp.isManipulatingHud;
+	return _.BattleManager_isBusy.apply(this, arguments) || $gameTemp.isManipulatingHud;
 };
 
 //-----------------------------------------------------------------------------
@@ -418,12 +639,14 @@ HUDManager.typeNames = [];
 HUDManager.types = {};
 HUDManager.nextId = 1;
 HUDManager.showPiecesType = true;
+HUDManager._copiedData = null;
 
 HUDManager.setup = function(data, hud) {
 	this._sprites = [];
 	this._data = data;
 	this._hud = hud;
 	this._currentId = -1;
+	this._hud.clearAllContents();
 	this.setupData();
 	this.refreshLayers();
 };
@@ -491,7 +714,7 @@ HUDManager.getSpritesOnLayer = function(layer) {
 HUDManager.refreshHighlightZ = function() {
 	const sprite = this.getSprite();
 	if(sprite) {
-		this.getHighlight().z = sprite.z - 0.1;
+		this.getHighlight().z = sprite.z;
 		this.refreshLayers();
 	}
 };
@@ -513,6 +736,12 @@ HUDManager.onChange = function() {
 	this.onChangeProperties(id);
 	this._currentId = id;
 	this.refreshHighlight();
+};
+
+HUDManager.onConfigChange = function() {
+	if($gameMap) {
+		$gameMap.setCurrentHUDConfig(MakerManager.document.getElementById('configurations').value);
+	}
 };
 
 HUDManager.onChangeProperties = function(id) {
@@ -609,6 +838,7 @@ HUDManager.setupNewSprite = function(sprite) {
 	sprite._originalY = Graphics.boxHeight / 2;
 	sprite.setHighlight(this.getHighlight());
 	this._hud.addChild(sprite);
+	console.log(sprite);
 	this._sprites.push(sprite);
 	this._currentId = this._sprites.length - 1;
 	this.refreshCurrentId();
@@ -626,6 +856,13 @@ HUDManager.refreshCurrentId = function() {
 			}
 		}
 		for(let i = this._currentId; i < this._sprites.length; i++) {
+			const s = this._sprites[i];
+			if(s && s._isActive) {
+				this._currentId = i;
+				return;
+			}
+		}
+		for(let i = 0; i < this._sprites.length; i++) {
 			const s = this._sprites[i];
 			if(s && s._isActive) {
 				this._currentId = i;
@@ -701,28 +938,40 @@ HUDManager.onDelete = function() {
 	}
 	this._sprites = sprites;
 	this._data = datas;
-	if(!this._sprites[this._currentId]) {
+	if(!this._sprites[this._currentId] || !this._sprites[this._currentId]._isActive) {
 		if(this._sprites.length > 0) {
-			//this._currentId = 0;
 			this.refreshCurrentId();
-		} else {
+		} else if(!this.showPiecesType) {
 			this._currentId = null;
 			this.getHighlight().setup(null);
 		}
+	}
+	if(this._sprites.length === 0) {
+		this._currentId = null;
+		this.getHighlight().setup(null);
 	}
 	this.refreshChoices();
 	this.onChange();
 };
 
 HUDManager.onClone = function() {
-	const data = JsonEx.makeDeepCopy(this.getData());
-	const type = data.type;
-	this._data.push(data);
-	const sprite = new this.types[type].class(data);
-	this.setupNewSprite(sprite);
-	this.refreshChoices();
-	this.onChange();
+	this._copiedData = this.getData();
 };
+
+HUDManager.onPaste = function() {
+	if(this._copiedData) {
+		const data = JsonEx.makeDeepCopy(this._copiedData);
+		const type = data.type;
+		data.id = this._data.length;
+		this._data.push(data);
+		const sprite = new this.types[type].class(data);
+		this.setupNewSprite(sprite);
+		this._currentId = data.id;
+		MakerManager.document.getElementById('choices').value = this._currentId;
+		this.refreshChoices();
+		this.onChange();
+	}
+}
 
 HUDManager.onSnapToggle = function() {
 	const container = MakerManager.document.getElementById('SnapButton');
@@ -763,33 +1012,63 @@ HUDManager.onShowToggle = function() {
 		container.innerHTML = `<td align="center"><button class="button" id="showButtonToggle" 
 								style="background-color: ${_.surrondColor};" onclick="HUDManager.onShowToggle()" />Hidden Pieces: Hide</button></td>`;
 		this.showPiecesType = false;
-		if(this._sprites.length > 0) {
-			this.refreshCurrentId();
-		}
-		else {
-			this._currentId = null;
-			this.getHighlight().setup(null);
-		}
 	} else {
 		container.innerHTML = `<td align="center"><button class="button" id="showButtonToggle" 
 								style="background-color: ${_.overlayColor};" onclick="HUDManager.onShowToggle()" />Hidden Pieces: Show</button></td>`;
 		this.showPiecesType = true;
 	}
+	if(this._sprites.length > 0) {
+		this.refreshCurrentId();
+	} else {
+		this._currentId = null;
+		this.getHighlight().setup(null);
+	}
 	this.refreshChoices();
 	this.onChange();
 };
 
-HUDManager.onFinish = function() {
+HUDManager.forceUpdateOptions = function() {
+	const container1 = MakerManager.document.getElementById('SnapButton');
+	const container2 = MakerManager.document.getElementById('HighButton');
+	const container3 = MakerManager.document.getElementById('ShowButton');
+	if(this.snapMode) {
+		container1.innerHTML = `<td align="center"><button class="button" id="snapButtonToggle" 
+								style="background-color: ${_.relativeColor};" onclick="HUDManager.onSnapToggle()" />Snap Type: Relative</button></td>`;
+	} else {
+		container1.innerHTML = `<td align="center"><button class="button" id="snapButtonToggle" 
+								style="background-color: ${_.globalColor};" onclick="HUDManager.onSnapToggle()" />Snap Type: Global</button></td>`;
+	}
+	if(this.highlightType) {
+		container2.innerHTML = `<td align="center"><button class="button" id="highButtonToggle" 
+								style="background-color: ${_.overlayColor};" onclick="HUDManager.onHighToggle()" />Highlight: Overlay</button></td>`;
+	} else {
+		container2.innerHTML = `<td align="center"><button class="button" id="highButtonToggle" 
+								style="background-color: ${_.surrondColor};" onclick="HUDManager.onHighToggle()" />Highlight: Surrond</button></td>`;
+	}
+	if(!this.showPiecesType) {
+		container3.innerHTML = `<td align="center"><button class="button" id="showButtonToggle" 
+								style="background-color: ${_.surrondColor};" onclick="HUDManager.onShowToggle()" />Hidden Pieces: Hide</button></td>`;
+	} else {
+		container3.innerHTML = `<td align="center"><button class="button" id="showButtonToggle" 
+								style="background-color: ${_.overlayColor};" onclick="HUDManager.onShowToggle()" />Hidden Pieces: Show</button></td>`;
+	}
+};
+
+HUDManager.removeInteraction = function() {
 	this._spriteTarget = null;
 	this.getHighlight().setup(null);
 	this._sprites.forEach(function(sprite) {
 		sprite.cancelAsTarget();
 	});
+}
+
+HUDManager.onFinish = function() {
+	this.removeInteraction();
 	this.save();
 	SceneManager._scene.endHud();
 };
 
-HUDManager.save = function() {
+HUDManager.saveConfig = function() {
 	for(let i = 0; i < this._sprites.length; i++) {
 		const spr = this._sprites[i];
 		if(!spr) continue;
@@ -797,10 +1076,14 @@ HUDManager.save = function() {
 		this._data[i].y = spr._originalY;
 	}
 	if(SceneManager._scene.constructor === Scene_Map) {
-		$dataMapHUD = JsonEx.makeDeepCopy(this._data);
+		$dataMapHUD[$gameMap.currentHUDConfig()] = JsonEx.makeDeepCopy(this._data);
 	} else {
-		$dataBattleHUD = JsonEx.makeDeepCopy(this._data);
+		$dataBattleHUD[$gameMap.currentHUDConfig()] = JsonEx.makeDeepCopy(this._data);
 	}
+}
+
+HUDManager.save = function() {
+	this.saveConfig();
 	_.saveData();
 };
 
@@ -849,7 +1132,7 @@ HUDManager.returnToMaker = function() {
 //-----------------------------------------------------------------------------
 // HUDManager
 //-----------------------------------------------------------------------------
-
+//
 HUDManager.createTitle = function(id, type) {
 	return `<h3 style="text-align:center;"><b>(ID: ${id})</b> ${type} Element</h3>`;
 };
@@ -861,11 +1144,19 @@ HUDManager.createHeader = function() {
 			</tr>`;
 };
 
-HUDManager.createInput = function(id, value) {
-	return `<tr>
-				<td>${id}:</td>
-				<td><input type="text" id="${id}" value="${value}"></td>
-			</tr>`;
+HUDManager.createInput = function(id, value, min, max) {
+	const data = (!!min && !!max) ? `type="number" min="${min}" max="${max}"` : `type="text"`;
+	if(_.active) {
+		return `<tr>
+					<td>${id}:</td>
+					<td><input ${data} id="${id}" onchange="HUDManager.refreshSprite()" value="${value}"></td>
+				</tr>`;
+	} else {
+		return `<tr>
+					<td>${id}:</td>
+					<td><input ${data} id="${id}" value="${value}"></td>
+				</tr>`;
+	}
 };
 
 HUDManager.createConditionInput = function(id, value) {
@@ -880,17 +1171,28 @@ HUDManager.createConditionInput = function(id, value) {
 		value = '';
 	}
 	const color = (bool) ? _.trueColor : _.falseColor;
-	return `<tr id="Condition Bla">
-				<td>${id}:</td>
-				<td><input type="text" id="${id}" value="${value}" style="background-color:${color};"></td>
-			</tr>`;
+	if(_.active) {
+		return `<tr id="Condition Bla">
+					<td>${id}:</td>
+					<td><input type="text" id="${id}" onchange="HUDManager.refreshSprite()" value="${value}" style="background-color:${color};"></td>
+				</tr>`;
+	} else {
+		return `<tr id="Condition Bla">
+					<td>${id}:</td>
+					<td><input type="text" id="${id}" value="${value}" style="background-color:${color};"></td>
+				</tr>`;
+	}
 };
 
 HUDManager.createSelect = function(id) {
 	let result = `<tr>
 					<td>${id}:</td>
-					<td align="center">
-						<select id="${id}" style="width:100%">`;
+						<td align="center">`;
+	if(_.active) {
+		result += `<select id="${id}" onchange="HUDManager.refreshSprite()" style="width:100%">`;
+	} else {
+		result += `<select id="${id}" style="width:100%">`;
+	}			
 	for(let i = 1; i < arguments.length; i++) {
 		const info = arguments[i];
 		result += '<option value="' + info[0] + '" ' + info[1] + '>' + info[2] + '</option>';
@@ -904,8 +1206,12 @@ HUDManager.createSelect = function(id) {
 HUDManager.createSelectArray = function(id, options) {
 	let result = `<tr>
 					<td>${id}:</td>
-					<td align="center">
-						<select id="${id}" style="width:100%">`;
+						<td align="center">`;
+	if(_.active) {
+		result += `<select id="${id}" onchange="HUDManager.refreshSprite()" style="width:100%">`;
+	} else {
+		result += `<select id="${id}" style="width:100%">`;
+	}	
 	for(let i = 0; i < options.length; i++) {
 		const info = options[i];
 		result += '<option value="' + info[0] + '" ' + info[1] + '>' + info[2] + '</option>';
@@ -917,11 +1223,19 @@ HUDManager.createSelectArray = function(id, options) {
 };
 
 HUDManager.createColor = function(id, value, id2, value2) {
-	return `<tr>
-				<td>${id}:</td>
-				<td align="center"><input type="color" id="${id}" value="${value}" style="width:90%"><br style="line-height: 175%;">
-				Opacity: <input type="text" id="${id2}" value="${value2}" style="width:50%"></td>
-			</tr>`;
+	if(_.active) {
+		return `<tr>
+					<td>${id}:</td>
+					<td align="center"><input type="color" id="${id}" onchange="HUDManager.refreshSprite()" value="${value}" style="width:90%"><br style="line-height: 175%;">
+					Opacity: <input type="text" id="${id2}" onchange="HUDManager.refreshSprite()" value="${value2}" style="width:50%"></td>
+				</tr>`;
+	} else {
+		return `<tr>
+					<td>${id}:</td>
+					<td align="center"><input type="color" id="${id}" value="${value}" style="width:90%"><br style="line-height: 175%;">
+					Opacity: <input type="text" id="${id2}" value="${value2}" style="width:50%"></td>
+				</tr>`;
+	}
 };
 
 HUDManager.createFilelist = function(id, folder, value, includeNone) {
@@ -929,8 +1243,12 @@ HUDManager.createFilelist = function(id, folder, value, includeNone) {
 	let select = '';
 	let result = `<tr>
 					<td>${id}:</td>
-					<td align="center">
-						<select id="${id}" style="width:100%">`;
+						<td align="center">`;
+	if(_.active) {
+		result += `<select id="${id}" onchange="HUDManager.refreshSprite()" style="width:100%">`;
+	} else {
+		result += `<select id="${id}" style="width:100%">`;
+	}	
 	if(includeNone) {
 		if(value === "N\n\nONE") select = 'selected';
 		else select = '';
@@ -996,13 +1314,19 @@ HUDManager.getHtmlFocusChart = function() {
 					<th align="center">Element Manager</th>
 				</tr>
 				<tr>
+					<td align="center"><select id="configurations" onchange='HUDManager.onConfigChange()'>${HUDManager.getConfigOptions()}</select></td>
+				</tr>
+				<tr>
 					<td align="center"><select id="choices" onchange='HUDManager.onChange()'></select></td>
 				</tr>
 				<tr>
-					<td align="center"><button class="button" id="deleteButton" onclick="HUDManager.onDelete()" />Delete!</button></td>
-				</tr>
-				<tr>
-					<td align="center"><button class="button" id="cloneButton" onclick="HUDManager.onClone()" />Clone!</button></td>
+					<td align="center">
+						<div style="width: 100%;">
+							<button style="float:left" class="button" id="cloneButton" onclick="HUDManager.onClone()" />Copy!</button>
+							<button style="float:center" class="button" id="pasteButton" onclick="HUDManager.onPaste()" />Paste!</button>
+							<button style="float:right" class="button" id="deleteButton" onclick="HUDManager.onDelete()" />Delete!</button>
+						</div>
+					</td>
 				</tr>
 			</table>`;
 };
@@ -1013,19 +1337,22 @@ HUDManager.getHtmlOptionsChart = function() {
 					<th align="center">Options</th>
 				</tr>
 				<tr id="SnapButton">
-					<td align="center"><button class="button" id="snapButtonToggle" 
-					style="background-color: ${_.globalColor};" onclick="HUDManager.onSnapToggle()" />Snap Type: Global</button></td>
 				</tr>
 				<tr id="HighButton">
-					<td align="center"><button class="button" id="highButtonToggle" 
-					style="background-color: ${_.surrondColor};" onclick="HUDManager.onHighToggle()" />Highlight: Surrond</button></td>
 				</tr>
 				<tr id="ShowButton">
-					<td align="center"><button class="button" id="showButtonToggle" 
-					style="background-color: ${_.overlayColor};" onclick="HUDManager.onShowToggle()" />Hidden Pieces: Show</button></td>
 				</tr>
 			</table>`;
 };
+
+HUDManager.getConfigOptions = function() {
+	let result = '<option value="">[Default Configuration]</option>';
+	if(_.configurations.length === 0) return result;
+	_.configurations.forEach(function(name) {
+		result += '<option value="' + name + '" ' + (name === $gameMap.currentHUDConfig() ? "selected" : "") + '>' + name + '</option>';
+	}, this);
+	return result;
+}
 
 HUDManager.getHtmlCreateChartOptions = function() {
 	let result = '';
@@ -1042,6 +1369,7 @@ HUDManager.getHtmlCreateChartOptions = function() {
 //-----------------------------------------------------------------------------
 
 HUDManager.createRefresh = function() {
+	if(_.active) return '';
 	return `<tr>
 				<td style="width: 75px;">Refresh:</td>
 				<td align="center"><button class="button" id="refreshButton" onclick="HUDManager.refreshSprite()" />Refresh!</button></td>
@@ -1058,9 +1386,11 @@ HUDManager.getBlankTableHtml = function() {
 
 HUDManager.setupWindowHtml = function() {
 	const scene = SceneManager._scene;
-	if(scene.constructor === Scene_Map || scene.constructor === Scene_Battle) {
+	if(!Utils.RPGMAKER_VERSION || Utils.RPGMAKER_VERSION < '1.3.0') {
+		alert("HUD Maker requires your project to be at v1.3.0 or greater!");
+	} else if(scene.constructor === Scene_Map || scene.constructor === Scene_Battle) {
 		MakerManager.style.innerHTML = this.getStyle();
-		MakerManager.window.title = "Game Tool Engine  -  HUD Maker  |  SumRndmDde";
+		MakerManager.window.title = "Super Tools Engine  -  HUD Maker  |  SumRndmDde";
 		MakerManager.mode = 'hud';
 		this.setupMakerHtml();
 		scene.startHud();
@@ -1076,34 +1406,26 @@ HUDManager.topBar = function(type) {
 				<li><a ${active[0]} onclick="HUDManager.setupMakerHtml()">Maker</a></li>
 				<li><a ${active[1]} onclick="HUDManager.setupAnimatorHtml()">Animate</a></li>
 				<li><a ${active[2]} onclick="HUDManager.setupControlsHtml()">Controls</a></li>
-				<li><a ${active[3]} onclick="HUDManager.setupTutorialHtml()">Tutorial</a></li>
-				<li><a ${active[4]} onclick="HUDManager.setupCreditsHtml()">Resources</a></li>
+				<li><a ${active[3]} onclick="HUDManager.setupCreditsHtml()">Resources</a></li>
 				<li style="float:right"><a onclick="HUDManager.returnToMaker()">Return to Main</a></li>
 			</ul>`;
 };
 
 HUDManager.setupMakerHtml = function() {
 	MakerManager.document.body.innerHTML = this.topBar(0) + this.getMakerHtml();
-	HUDManager.refreshChoices();
-	HUDManager.onChange();
+	this.forceUpdateOptions();
+	this.refreshChoices();
+	this.onChange();
 };
 
 HUDManager.setupAnimatorHtml = function() {
 	MakerManager.document.body.innerHTML = this.topBar(1) + this.getAnimatorHtml();
-	HUDManager.setupAnimator();
-	HUDManager.refreshChoices();
+	this.setupAnimator();
+	this.refreshChoices();
 };
 
 HUDManager.setupControlsHtml = function() {
 	MakerManager.document.body.innerHTML = this.topBar(2) + this.getControlsHtml();
-};
-
-HUDManager.setupTutorialHtml = function() {
-	MakerManager.document.body.innerHTML = this.topBar(3) + this.getTutorialHtml();
-};
-
-HUDManager.setupCreditsHtml = function() {
-	MakerManager.document.body.innerHTML = this.topBar(4) + this.getCreditsHtml();
 };
 
 HUDManager.getAnimatorHtml = function() {
@@ -1168,8 +1490,8 @@ HUDManager.getControlsHtml = function() {
 						<th>Description</th>
 					</tr>
 					<tr>
-						<td id="Control">Right-Click</td>
-						<td>While holding Right-Click, one can drag the HUD pieces around on the main screen.</td>
+						<td id="Control">Left-Click</td>
+						<td>While holding Left-Click, one can drag the HUD pieces around on the main screen.</td>
 					</tr>
 					<tr>
 						<td id="Control">CTRL</td>
@@ -1201,14 +1523,6 @@ HUDManager.getControlsHtml = function() {
 					</tr>
 				</table>
 			</p>`;
-};
-
-HUDManager.getTutorialHtml = function() {
-	return ``;
-};
-
-HUDManager.getCreditsHtml = function() {
-	return ``;
 };
 
 HUDManager.getStyle = function() {
@@ -1342,6 +1656,102 @@ HUDManager.getStyle = function() {
 };
 
 //-----------------------------------------------------------------------------
+// HUDManager
+//-----------------------------------------------------------------------------
+
+HUDManager.checkInternet = function() {
+	if(!_.isPlaytest) return;
+	require('dns').lookup('www.google.com', function(err) {
+		if (err && err.code == "ENOTFOUND") {
+			this._internet = false;
+		} else {
+			this._internet = true;
+		}
+		this._checkComplete = true;
+		this.checkForUpdates();
+	}.bind(this));
+};
+
+HUDManager.checkForUpdates = function() {
+	if(!this._internet) return;
+	this.getLog('https://raw.githubusercontent.com/SumRndmDde/PluginUpdater/master/SRD_HUDMakerResources.json');
+};
+
+HUDManager.getLog = function(url) {
+	const xhr = new XMLHttpRequest();
+	xhr.open('GET', url);
+	xhr.overrideMimeType('application/json');
+	xhr.onload = function() {
+		if(xhr.status < 400) {
+			this.storeLog(xhr.responseText);
+		}
+	}.bind(this);
+	xhr.onerror = function() {};
+	xhr.send();
+};
+
+HUDManager.storeLog = function(content) {
+	this._log = JSON.parse(content.replace(/QUOTEHERE/g,'\\"'));
+};
+
+HUDManager.openLink = function(url) {
+	require('nw.gui').Shell.openExternal(url);
+};
+
+//-----------------------------------------------------------------------------
+// HUDManager
+//-----------------------------------------------------------------------------
+
+HUDManager.setupCreditsHtml = function() {
+	if(!this._internet) {
+		alert("No internet connection detected. Please check your connection and try again later.");
+		return;
+	}
+	if(!this._checkComplete) {
+		alert("Update data has not finished loading. Please try again in a bit.");
+		return;
+	}
+	MakerManager.document.body.innerHTML = this.topBar(3) + this.getCreditsHtml();
+};
+
+HUDManager.getCreditsHtml = function() {
+	return `<p>
+				<div style="float: center; width: 100%; text-align:center;"><br>
+					<b><u>List of HUD Maker Packs</u></b>
+					<blockquote>
+						Here is a list of assets provided by tons of awesome people before and after the release of HUD Maker!
+						Please be sure to download and enjoy if you wish!
+						<em>Be sure to credit the asset creators if you choose to use their work.</em>
+					</blockquote>
+				</div>
+				<div id="scrollStuff" style="background-color: ${MakerManager.colors[10]}; height: 475px; overflow: scroll;">
+					${this.getLogList()}
+				<div>
+				<br>
+			</p>`;
+};
+
+HUDManager.getLogList = function() {
+	let result = '';
+	this._log.forEach(function(info) {
+		result +=  `<p style="text-align: center;"><span style="font-size:20px;"><strong>${info[0]}</strong></span><br />
+					<u><em>by ${info[1]}</em></u></p>
+					<blockquote>${info[4]}</blockquote>
+					<div style="text-align: center;">
+						<button class="button" onclick="HUDManager.openLink('${info[3]}')" />${info[2]}</button>
+					</div>
+					<br><hr />`;
+	}, this);
+	return result;
+};
+
+HUDManager.initManager = function() {
+	this.checkInternet();
+};
+
+HUDManager.initManager();
+
+//-----------------------------------------------------------------------------
 // Game_Temp
 //-----------------------------------------------------------------------------
 
@@ -1355,10 +1765,80 @@ Game_Temp.prototype.initialize = function() {
 // Game_Map
 //-----------------------------------------------------------------------------
 
+_.Game_Map_initialize = Game_Map.prototype.initialize;
+Game_Map.prototype.initialize = function() {
+	_.Game_Map_initialize.apply(this, arguments);
+	this._currentHUDConfig = "";
+};
+
+_.Game_Map_setup = Game_Map.prototype.setup;
+Game_Map.prototype.setup = function(mapId) {
+	_.Game_Map_setup.apply(this, arguments);
+	if($dataMap && $dataMap.meta) {
+		if($dataMap.meta["HUD Configuration"]) {
+			this._currentHUDConfig = $dataMap.meta["HUD Configuration"].trim();
+		} else if($dataMap.meta["Default HUD Configuration"]) {
+			this._currentHUDConfig = "";
+		}
+	}
+};
+
+Game_Map.prototype.currentHUDConfig = function() {
+	return this._currentHUDConfig;
+};
+
+Game_Map.prototype.setCurrentHUDConfig = function(id) {
+	if(this._currentHUDConfig !== id) {
+		if($gameTemp.isManipulatingHud) {
+			HUDManager.removeInteraction();
+			HUDManager.saveConfig();
+		}
+		this._currentHUDConfig = id;
+		
+		var scene = SceneManager._scene;
+		if(scene.refreshHUD) {
+			scene.refreshHUD();
+		}
+		if($gameTemp.isManipulatingHud) {
+			HUDManager.setupMakerHtml();
+			HUDManager.initHudMaker();
+		}
+		
+	}
+}
+
 _.Game_Map_isEventRunning = Game_Map.prototype.isEventRunning;
 Game_Map.prototype.isEventRunning = function() {
 	return _.Game_Map_isEventRunning.apply(this, arguments) || $gameTemp.isManipulatingHud;
 };
+
+//-----------------------------------------------------------------------------
+// Game_Interpreter
+//-----------------------------------------------------------------------------
+
+_.Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
+Game_Interpreter.prototype.pluginCommand = function(command, args) {
+	_.Game_Interpreter_pluginCommand.apply(this, arguments);
+	if(command.trim().toLowerCase() === 'setdefaulthudconfiguration') {
+		$gameMap.setCurrentHUDConfig("");
+	} else if(command.trim().toLowerCase() === 'sethudconfiguration') {
+		$gameMap.setCurrentHUDConfig(args[0]);
+	}
+};
+
+//-----------------------------------------------------------------------------
+// Game_BattlerBase
+//-----------------------------------------------------------------------------
+
+Object.defineProperties(Game_BattlerBase.prototype, {
+	// Max TP
+	mtp: {
+		get: function() { 
+			return this.maxTp(); 
+		}, 
+		configurable: true 
+	}
+});
 
 //-----------------------------------------------------------------------------
 // Scene_Map
@@ -1368,8 +1848,15 @@ _.Scene_Map_start = Scene_Map.prototype.start;
 Scene_Map.prototype.start = function() {
 	_.Scene_Map_start.apply(this, arguments);
 	if(this._hud) {
-		HUDManager.setup($dataMapHUD, this._hud);
+		this.refreshHUD();
 		this.createHudUpperLayer();
+	}
+};
+
+Scene_Map.prototype.refreshHUD = function() {
+	if(this._hud) {
+		HUDManager.setup($dataMapHUD[$gameMap.currentHUDConfig()] || [], this._hud);
+		this._hud.refresh();
 	}
 };
 
@@ -1431,8 +1918,15 @@ _.Scene_Battle_start = Scene_Battle.prototype.start;
 Scene_Battle.prototype.start = function() {
 	_.Scene_Battle_start.apply(this, arguments);
 	if(this._hud) {
-		HUDManager.setup($dataBattleHUD, this._hud);
+		this.refreshHUD();
 		this.createHudUpperLayer();
+	}
+};
+
+Scene_Battle.prototype.refreshHUD = function() {
+	if(this._hud) {
+		HUDManager.setup($dataBattleHUD[$gameMap.currentHUDConfig()] || [], this._hud);
+		this._hud.refresh();
 	}
 };
 
@@ -1463,7 +1957,7 @@ Scene_Battle.prototype.createHudBackground = function() {
 };
 
 Scene_Battle.prototype.createHud = function() {
-	this._hud = new MapHUD();
+	this._hud = new BattleHUD();
 	this.addChild(this._hud);
 };
 
@@ -1488,10 +1982,6 @@ Scene_Battle.prototype.endHud = function() {
 // Sprite_HUDCursor
 //-----------------------------------------------------------------------------
 
-function Sprite_HUDCursor() {
-	this.initialize.apply(this, arguments);
-}
-
 Sprite_HUDCursor.prototype = Object.create(Sprite.prototype);
 Sprite_HUDCursor.prototype.constructor = Sprite_HUDCursor;
 
@@ -1503,6 +1993,7 @@ Sprite_HUDCursor.prototype.initialize = function() {
 	this._speed = 8;
 	this._size = 10;
 	this.mode = '';
+	this.__isCursor = true;
 	this.createHudLines();
 };
 
@@ -1602,10 +2093,6 @@ Sprite_HUDCursor.prototype.getVerticalLine = function() {
 //-----------------------------------------------------------------------------
 // Sprite_HUDObject
 //-----------------------------------------------------------------------------
-
-function Sprite_HUDObject() {
-	this.initialize.apply(this, arguments);
-}
 
 Sprite_HUDObject.prototype = Object.create(Sprite.prototype);
 Sprite_HUDObject.prototype.constructor = Sprite_HUDObject;
@@ -1858,7 +2345,7 @@ Sprite_HUDObject.prototype.updateCondition = function() {
 		}
 	}
 };
-
+// fix
 Sprite_HUDObject.prototype.updateAnimation = function(mainVar, spd, loop, min, max, dirVar) {
 	if(spd) {
 		if(!loop) {
@@ -1910,20 +2397,14 @@ Sprite_HUDObject.prototype.setHighlight = function(highlight) {
 };
 
 Sprite_HUDObject.prototype.setAsTarget = function() {
-	if(this.isTarget) {
-		//this.removeChild(this.highlight);
-	}
 	this.isTarget = true;
+	this.setupSnaps();
 	this.layerPeers = HUDManager.getSpritesOnLayer(this.z);
 	this.prevY = this.y;
-	//this.addChild(this.highlight);
 };
 
 Sprite_HUDObject.prototype.cancelAsTarget = function() {
-	this.isTarget = false;/*
-	if(this.children.indexOf(this.highlight) > -1) {
-		this.removeChild(this.highlight);
-	}*/
+	this.isTarget = false;
 };
 
 Sprite_HUDObject.prototype.refresh = function(refreshProperties) {
@@ -1935,6 +2416,7 @@ Sprite_HUDObject.prototype.refresh = function(refreshProperties) {
 Sprite_HUDObject.prototype.refreshProperties = function() {
 	this.updateRealScale();
 	this._condition = this["Condition"];
+	//this._conditionFunction = new Function(this._condition);
 	this.updateActivity();
 	if(this.isTarget) {
 		this.updateConditionInput();
@@ -1947,6 +2429,7 @@ Sprite_HUDObject.prototype.updateActivity = function() {
 	} else {
 		try {
 			this._isActive = !!eval(this._condition);
+			//this._isActive = !!this._conditionFunction();
 		} catch(e) {
 			console.log(this._condition + " \n" + e);
 			alert("There is an error with \"" + this._condition + "\" Press F8 to see more!");
@@ -1999,13 +2482,28 @@ Sprite_HUDObject.prototype.updateConditionInput = function() {
 	}
 };
 
+Sprite_HUDObject.prototype.postError = function(e) {
+	console.log(e);
+	alert('The "Image" input had an error. Check the console for more info.');
+};
+
+Sprite_HUDObject.prototype.resizeBitmap = function(bit, width, height) {
+	if(bit.width !== width || bit.height !== height) {
+		bit.resize(width, height);
+		this._frame.width = 0;
+		this._frame.height = 0;
+		if(_.isV150) {
+			this._refreshFrame = true;
+			this._onBitmapLoad(bit);
+		} else {
+			this._onBitmapLoad();
+		}
+	}
+};
+
 //-----------------------------------------------------------------------------
 // Sprite_HUDText
 //-----------------------------------------------------------------------------
-
-function Sprite_HUDText() {
-	this.initialize.apply(this, arguments);
-}
 
 Sprite_HUDText.prototype = Object.create(Sprite_HUDObject.prototype);
 Sprite_HUDText.prototype.constructor = Sprite_HUDText;
@@ -2055,6 +2553,8 @@ Sprite_HUDText.getHtml = function(data) {
 				${HUDManager.createRefresh()}
 			</table>`;
 };
+
+//_.active
 
 /*
  * Register Sprite_HUDText within the HUDManager
@@ -2115,7 +2615,7 @@ Sprite_HUDText.prototype.getNewValue = function() {
 
 Sprite_HUDText.prototype.update = function() {
 	Sprite_HUDObject.prototype.update.call(this);
-	if(!this._isActive) return;
+	if(!this._isVisible) return;
 	const newValue = this.getNewValue();
 	if(this._value !== newValue) {
 		this._value = newValue;
@@ -2137,12 +2637,7 @@ Sprite_HUDText.prototype.refreshProperties = function() {
 	const bit = this.bitmap;
 	const width = parseInt(this["Max Width"]);
 	const height = parseInt(this["Font Size"]) + 12;
-	if(bit.width !== width || bit.height !== height) {
-		this.bitmap.resize(width, height);
-		this._frame.width = 0;
-		this._frame.height = 0;
-		this._onBitmapLoad();
-	}
+	this.resizeBitmap(bit, width, height);
 	this.z = parseInt(this["Layer"]);
 	this.bitmap.fontFace = this["Font"];
 	this.bitmap.fontSize = parseInt(this["Font Size"]);
@@ -2153,10 +2648,6 @@ Sprite_HUDText.prototype.refreshProperties = function() {
 //-----------------------------------------------------------------------------
 // Sprite_HUDTextEx
 //-----------------------------------------------------------------------------
-
-function Sprite_HUDTextEx() {
-	this.initialize.apply(this, arguments);
-}
 
 Sprite_HUDTextEx.prototype = Object.create(Sprite_HUDObject.prototype);
 Sprite_HUDTextEx.prototype.constructor = Sprite_HUDTextEx;
@@ -2228,7 +2719,7 @@ Sprite_HUDTextEx.prototype.initialize = function(info) {
 
 Sprite_HUDTextEx.prototype.update = function() {
 	Sprite_HUDObject.prototype.update.call(this);
-	if(!this._isActive) return;
+	if(!this._isVisible) return;
 	const newValue = this.convertEscapeCharacters(this["Value"]);
 	if(this._value !== newValue) {
 		this._value = newValue;
@@ -2249,12 +2740,7 @@ Sprite_HUDTextEx.prototype.refreshProperties = function() {
 	const bit = this.bitmap;
 	const width = parseInt(this["Width"]);
 	const height = parseInt(this["Height"]);
-	if(bit.width !== width || bit.height !== height) {
-		this.bitmap.resize(width, height);
-		this._frame.width = 0;
-		this._frame.height = 0;
-		this._onBitmapLoad();
-	}
+	this.resizeBitmap(bit, width, height);
 	this.z = parseInt(this["Layer"]);
 	this.setupSnaps();
 };
@@ -2263,6 +2749,11 @@ Sprite_HUDTextEx.prototype.resetFontSettings = function() {
 	this.contents.fontFace = "GameFont";
 	this.contents.fontSize = 28;
 	this.contents.textColor = "#FFFFFF"
+};
+
+Sprite_HUDTextEx.prototype.textColor = function(n) {
+	if(this._textColorWin === undefined) this._textColorWin = new Window_Base();
+	return this._textColorWin.textColor(n);
 };
 
 Sprite_HUDTextEx.prototype.drawTextEx = Window_Base.prototype.drawTextEx;
@@ -2282,14 +2773,42 @@ Sprite_HUDTextEx.prototype.makeFontBigger = Window_Base.prototype.makeFontBigger
 Sprite_HUDTextEx.prototype.makeFontSmaller = Window_Base.prototype.makeFontSmaller;
 Sprite_HUDTextEx.prototype.calcTextHeight = Window_Base.prototype.calcTextHeight;
 Sprite_HUDTextEx.prototype.drawIcon = Window_Base.prototype.drawIcon;
+Sprite_HUDTextEx.prototype.changeTextColor = Window_Base.prototype.changeTextColor;
+
+_.setupYEPMessageCore = function() {
+
+	Sprite_HUDTextEx.prototype.textWidthEx = Window_Base.prototype.textWidthEx;
+	Sprite_HUDTextEx.prototype.setWordWrap = Window_Base.prototype.setWordWrap;
+	Sprite_HUDTextEx.prototype.convertExtraEscapeCharacters = Window_Base.prototype.convertExtraEscapeCharacters;
+	Sprite_HUDTextEx.prototype.actorClassName = Window_Base.prototype.actorClassName;
+	Sprite_HUDTextEx.prototype.actorNickname = Window_Base.prototype.actorNickname;
+	Sprite_HUDTextEx.prototype.partyClassName = Window_Base.prototype.partyClassName;
+	Sprite_HUDTextEx.prototype.partyNickname = Window_Base.prototype.partyNickname;
+	Sprite_HUDTextEx.prototype.escapeIconItem = Window_Base.prototype.escapeIconItem;
+	Sprite_HUDTextEx.prototype.obtainEscapeString = Window_Base.prototype.obtainEscapeString;
+	Sprite_HUDTextEx.prototype.checkWordWrap = Window_Base.prototype.checkWordWrap;
+	Sprite_HUDTextEx.prototype.saveCurrentWindowSettings = Window_Base.prototype.saveCurrentWindowSettings;
+	Sprite_HUDTextEx.prototype.restoreCurrentWindowSettings = Window_Base.prototype.restoreCurrentWindowSettings;
+	Sprite_HUDTextEx.prototype.clearCurrentWindowSettings = Window_Base.prototype.clearCurrentWindowSettings;
+	Sprite_HUDTextEx.prototype.textWidthExCheck = Window_Base.prototype.textWidthExCheck;
+
+};
+
+_.convertOldData = function() {
+	if(Array.isArray($dataMapHUD)) {
+		$dataMapHUD = {"": $dataMapHUD};
+	}
+	if(Array.isArray($dataBattleHUD)) {
+		$dataBattleHUD = {"": $dataBattleHUD};
+	}
+}
+
+SRD.NotetagGetters.push(_.setupYEPMessageCore);
+SRD.NotetagGetters.push(_.convertOldData);
 
 //-----------------------------------------------------------------------------
 // Sprite_HUDShape
 //-----------------------------------------------------------------------------
-
-function Sprite_HUDShape() {
-	this.initialize.apply(this, arguments);
-}
 
 Sprite_HUDShape.prototype = Object.create(Sprite_HUDObject.prototype);
 Sprite_HUDShape.prototype.constructor = Sprite_HUDShape;
@@ -2328,7 +2847,7 @@ Sprite_HUDShape.getHtml = function(data) {
 
 	const blendArray = [];
 	for(let i = 0; i <= 16; i++) {
-		blendArray.push([String(i), parseInt(blend) === i, _.blendNames[i]])
+		blendArray.push([String(i), parseInt(blend) === i ? 'selected' : '', _.blendNames[i]])
 	}
 
 	try {
@@ -2352,8 +2871,8 @@ Sprite_HUDShape.getHtml = function(data) {
 				${HUDManager.createSelect("Fill Style",  ["solid", sele2[0], "Solid"], 
 												["horizontal", sele2[1], "Horizontal Gradient"],
 												["vertical", sele2[2], "Vertical Gradient"],
-												["radical", sele2[3], "Radical Gradient"],
-												["max radical", sele2[4], "Max Radical Gradient"])}
+												["radical", sele2[3], "Radial Gradient"],
+												["max radical", sele2[4], "Max Radial Gradient"])}
 				${HUDManager.createSelectArray("Blend", blendArray)}
 				${HUDManager.createColor("Color 1", color1, "Color 1 Alpha", color1A)}
 				${HUDManager.createColor("Color 2", color2, "Color 2 Alpha", color2A)}
@@ -2399,7 +2918,7 @@ HUDManager.types[Sprite_HUDShape._label] = {
 
 Sprite_HUDShape.prototype.initialize = function(info) {
 	Sprite_HUDObject.prototype.initialize.call(this, new Bitmap(1, 1), info);
-	this.properties = ["Layer", "Condition", "Shape", "Width", "Height", "Fill Style", "Color 1", "Color 1 Alpha", 
+	this.properties = ["Layer", "Condition", "Shape", "Width", "Height", "Fill Style", "Blend", "Color 1", "Color 1 Alpha", 
 						"Color 2", "Color 2 Alpha", "Outline Size", "Outline Color", "Color 3 Alpha"];
 	for(let i = 0; i < this.properties.length; i++) {
 		const prop = this.properties[i];
@@ -2460,25 +2979,17 @@ Sprite_HUDShape.prototype.refreshProperties = function() {
 	Sprite_HUDObject.prototype.refreshProperties.apply(this, arguments);
 	const bit = this.bitmap;
 	const outlineSize = parseInt(this["Outline Size"]);
-	const width = parseInt(this["Width"]) + (outlineSize * 2) + 1;
-	const height = parseInt(this["Height"]) + (outlineSize * 2) + 1;
-	if(bit.width !== width || bit.height !== height) {
-		this.bitmap.resize(width, height);
-		this._frame.width = 0;
-		this._frame.height = 0;
-		this._onBitmapLoad();
-	}
+	const width = parseInt(this["Width"]) + (outlineSize * 2);
+	const height = parseInt(this["Height"]) + (outlineSize * 2);
+	this.resizeBitmap(bit, width, height);
 	this.z = parseInt(this["Layer"]);
+	this.blendMode = parseInt(this["Blend"]);
 	this.setupSnaps();
 };
 
 //-----------------------------------------------------------------------------
 // Sprite_HUDImage
 //-----------------------------------------------------------------------------
-
-function Sprite_HUDImage() {
-	this.initialize.apply(this, arguments);
-}
 
 Sprite_HUDImage.prototype = Object.create(Sprite_HUDObject.prototype);
 Sprite_HUDImage.prototype.constructor = Sprite_HUDImage;
@@ -2507,7 +3018,7 @@ Sprite_HUDImage.getHtml = function(data) {
 
 	const blendArray = [];
 	for(let i = 0; i <= 16; i++) {
-		blendArray.push([String(i), parseInt(blend) === i, _.blendNames[i]])
+		blendArray.push([String(i), parseInt(blend) === i ? 'selected' : '', _.blendNames[i]])
 	}
 
 	return `${HUDManager.createTitle(data.id, Sprite_HUDImage._label)}
@@ -2574,7 +3085,15 @@ Sprite_HUDImage.prototype.refreshProperties = function() {
 	Sprite_HUDObject.prototype.refreshProperties.apply(this, arguments);
 	const image = this["Image"];
 	if(image) {
-		this.bitmap = _.getPicture(image, parseInt(this["Hue"]));
+		try {
+			this.bitmap = _.getPicture(image, parseInt(this["Hue"]));
+		} catch(e) {
+			this.postError(e);
+			this["Image"] = '';
+			this._value = '';
+			this.bitmap = null;
+			return;
+		}
 		this.z = parseInt(this["Layer"]);
 		this._baseXScale = parseFloat(this["Scale X"]);
 		this._baseYScale = parseFloat(this["Scale Y"]);
@@ -2587,10 +3106,6 @@ Sprite_HUDImage.prototype.refreshProperties = function() {
 //-----------------------------------------------------------------------------
 // Sprite_HUDCodeImage
 //-----------------------------------------------------------------------------
-
-function Sprite_HUDCodeImage() {
-	this.initialize.apply(this, arguments);
-}
 
 Sprite_HUDCodeImage.prototype = Object.create(Sprite_HUDObject.prototype);
 Sprite_HUDCodeImage.prototype.constructor = Sprite_HUDCodeImage;
@@ -2626,7 +3141,7 @@ Sprite_HUDCodeImage.getHtml = function(data) {
 
 	const blendArray = [];
 	for(let i = 0; i <= 16; i++) {
-		blendArray.push([String(i), parseInt(blend) === i, _.blendNames[i]])
+		blendArray.push([String(i), parseInt(blend) === i ? 'selected' : '', _.blendNames[i]])
 	}
 
 	return `${HUDManager.createTitle(data.id, Sprite_HUDCodeImage._label)}
@@ -2699,18 +3214,13 @@ Sprite_HUDCodeImage.prototype.getNewImage = function() {
 	
 Sprite_HUDCodeImage.prototype.update = function() {
 	Sprite_HUDObject.prototype.update.call(this);
-	if(!this._isActive) return;
+	if(!this._isVisible) return;
 	let newValue = this._value;
 	newValue = this.getNewImage();
 	if(this._value !== newValue) {
 		this._value = newValue;
 		this.refresh(true);
 	}
-};
-
-Sprite_HUDCodeImage.prototype.postError = function(e) {
-	console.log(e);
-	alert('The "Image" input had an error. Check the console for more info.');
 };
 
 Sprite_HUDCodeImage.prototype.refresh = function(refreshProperties) {
@@ -2747,10 +3257,6 @@ Sprite_HUDCodeImage.prototype.refreshProperties = function() {
 //-----------------------------------------------------------------------------
 // Sprite_HUDGauge
 //-----------------------------------------------------------------------------
-
-function Sprite_HUDGauge() {
-	this.initialize.apply(this, arguments);
-}
 
 Sprite_HUDGauge.prototype = Object.create(Sprite_HUDObject.prototype);
 Sprite_HUDGauge.prototype.constructor = Sprite_HUDGauge;
@@ -2840,6 +3346,7 @@ HUDManager.types[Sprite_HUDGauge._label] = {
 		"Color 2": 		"#ff0000",
 		"Color 2 Alpha":"255",
 		"Back Color":   "#666666",
+		"Color 4 Alpha": "255",
 		"Outline Size": "1",
 		"Outline Color":"#222222",
 		"Color 3 Alpha":"255"
@@ -2894,7 +3401,7 @@ Sprite_HUDGauge.prototype.getMaxValue = function() {
 
 Sprite_HUDGauge.prototype.update = function() {
 	Sprite_HUDObject.prototype.update.call(this);
-	if(!this._isActive) return;
+	if(!this._isVisible) return;
 	const newValue = this.getCurrentValue();
 	const newMax = this.getMaxValue();
 	if(this._value !== newValue || this._maxvalue !== newMax) {
@@ -2907,13 +3414,16 @@ Sprite_HUDGauge.prototype.update = function() {
 Sprite_HUDGauge.prototype.refresh = function(refreshProperties) {
 	Sprite_HUDObject.prototype.refresh.apply(this, arguments);
 	if((this._value || this._value === 0) && (this._maxvalue || this._maxvalue == 0)) {
+		this.bitmap.clear();
 		const outline = parseInt(this["Outline Size"]);
 		const width = this["Width"];
 		const height = this["Height"];
 		const color1 = _.convertHex(this["Color 1"], parseInt(this["Color 1 Alpha"]));
 		const color2 = _.convertHex(this["Color 2"], parseInt(this["Color 2 Alpha"]));
-		this.bitmap.fillRect(0, 0, width + (outline * 2), height + (outline * 2), this["Outline Color"]);
-		this.bitmap.fillRect(outline, outline, width, height, this["Back Color"]);
+		const outlineCol = _.convertHex(this["Outline Color"], parseInt(this["Color 3 Alpha"]));
+		const backCol = _.convertHex(this["Back Color"], parseInt(this["Color 4 Alpha"]));
+		this.bitmap.fillRect(0, 0, width + (outline * 2), height + (outline * 2), outlineCol);
+		this.bitmap.fillRect(outline, outline, width, height, backCol);
 		const fillW = Math.floor(width * (this._value / this._maxvalue)) || 0;
 		const fillH = Math.floor(height * (this._value / this._maxvalue)) || 0;
 		const style = this["Style"];
@@ -2935,12 +3445,7 @@ Sprite_HUDGauge.prototype.refreshProperties = function() {
 	const outline = parseInt(this["Outline Size"]);
 	const width = parseInt(this["Width"]) + (outline * 2);
 	const height = parseInt(this["Height"]) + (outline * 2);
-	if(bit.width !== width || bit.height !== height) {
-		this.bitmap.resize(width, height);
-		this._frame.width = 0;
-		this._frame.height = 0;
-		this._onBitmapLoad();
-	}
+	this.resizeBitmap(bit, width, height);
 	this.z = parseInt(this["Layer"]);
 	this.setupSnaps();
 };
@@ -2948,10 +3453,6 @@ Sprite_HUDGauge.prototype.refreshProperties = function() {
 //-----------------------------------------------------------------------------
 // Sprite_HUDImageGauge
 //-----------------------------------------------------------------------------
-
-function Sprite_HUDImageGauge() {
-	this.initialize.apply(this, arguments);
-}
 
 Sprite_HUDImageGauge.prototype = Object.create(Sprite_HUDObject.prototype);
 Sprite_HUDImageGauge.prototype.constructor = Sprite_HUDImageGauge;
@@ -3076,7 +3577,7 @@ Sprite_HUDImageGauge.prototype.getMaxValue = function() {
 
 Sprite_HUDImageGauge.prototype.update = function() {
 	Sprite_HUDObject.prototype.update.call(this);
-	if(!this._isActive) return;
+	if(!this._isVisible) return;
 	const newValue = this.getCurrentValue();
 	const newMax = this.getMaxValue();
 	if(this._value !== newValue || this._maxvalue !== newMax) {
@@ -3092,6 +3593,7 @@ Sprite_HUDImageGauge.prototype.refresh = function(refreshProperties) {
 	const horizontal = Boolean(style === 'left' || style === 'right');
 	if(this.bitmap) {
 		this.bitmap.addLoadListener(function() {
+			if($gameTemp.isManipulatingHud && this.highlight) this.highlight.setup(this);
 			if(horizontal) {
 				this._gauge.y = 0;
 				this._gauge.x = (this.bitmap.width / -2);
@@ -3174,10 +3676,6 @@ Sprite_HUDImageGauge.prototype.setupSnaps2 = function() {
 // Sprite_HUDImageText
 //-----------------------------------------------------------------------------
 
-function Sprite_HUDImageText() {
-	this.initialize.apply(this, arguments);
-}
-
 Sprite_HUDImageText.prototype = Object.create(Sprite_HUDObject.prototype);
 Sprite_HUDImageText.prototype.constructor = Sprite_HUDImageText;
 
@@ -3206,7 +3704,7 @@ Sprite_HUDImageText.getHtml = function(data) {
 
 	const blendArray = [];
 	for(let i = 0; i <= 16; i++) {
-		blendArray.push([String(i), parseInt(blend) === i, _.blendNames[i]])
+		blendArray.push([String(i), parseInt(blend) === i ? 'selected' : '', _.blendNames[i]])
 	}
 
 	return `${HUDManager.createTitle(data.id, Sprite_HUDImageText._label)}
@@ -3283,7 +3781,7 @@ Sprite_HUDImageText.prototype.getValue = function() {
 
 Sprite_HUDImageText.prototype.update = function() {
 	Sprite_HUDObject.prototype.update.call(this);
-	if(!this._isActive) return;
+	if(!this._isVisible) return;
 	const newValue = this.getValue();
 	if(this._value !== newValue) {
 		this._value = newValue;
@@ -3303,6 +3801,7 @@ Sprite_HUDImageText.prototype.refresh = function(refreshProperties) {
 			this.createNumbers(width);
 		}
 		this.applyNumbers(width, height);
+		if($gameTemp.isManipulatingHud && this.highlight) this.highlight.setup(this);
 		this.setupSnaps();
 	}.bind(this));
 };
@@ -3351,10 +3850,6 @@ Sprite_HUDImageText.prototype.refreshProperties = function() {
 //-----------------------------------------------------------------------------
 // Sprite_HUDFace
 //-----------------------------------------------------------------------------
-
-function Sprite_HUDFace() {
-	this.initialize.apply(this, arguments);
-}
 
 Sprite_HUDFace.prototype = Object.create(Sprite_HUDObject.prototype);
 Sprite_HUDFace.prototype.constructor = Sprite_HUDFace;
@@ -3438,6 +3933,8 @@ Sprite_HUDFace.prototype.initialize = function(info) {
 		this[prop] = info[prop];
 	}
 	this._value = this.getActorId();
+	this._actor = $gameActors.actor(this._value);
+	this._curFace = this._actor.faceName();
 	this.refresh(true);
 };
 
@@ -3454,11 +3951,11 @@ Sprite_HUDFace.prototype.getActorId = function() {
 
 Sprite_HUDFace.prototype.update = function() {
 	Sprite_HUDObject.prototype.update.call(this);
-	if(!this._isActive) return;
+	if(!this._isVisible) return;
 	const newValue = this.getActorId();
-	if(this._value !== newValue) {
+	if(this._value !== newValue || this._curFace !== this._actor.faceName()) {
 		this._value = newValue;
-		this.refresh();
+		this.refresh(true);
 	}
 };
 
@@ -3490,15 +3987,11 @@ Sprite_HUDFace.prototype.refreshProperties = function() {
 	const bit = this.bitmap;
 	const width = parseInt(this["Width"]);
 	const height = parseInt(this["Height"]);
-	if(bit.width !== width || bit.height !== height) {
-		this.bitmap.resize(width, height);
-		this._frame.width = 0;
-		this._frame.height = 0;
-		this._onBitmapLoad();
-	}
+	this.resizeBitmap(bit, width, height);
 	this.z = parseInt(this["Layer"]);
 	this._value = this.getActorId();
 	this._actor = $gameActors.actor(this._value);
+	this._curFace = this._actor.faceName();
 	this._oBitmap = ImageManager.loadFace(this._actor.faceName());
 	this.refreshMask(width, height);
 };
@@ -3522,7 +4015,12 @@ Sprite_HUDFace.prototype.refreshMaskBitmap = function(width, height) {
 	spr.bitmap.resize(width, height);
 	spr._frame.width = 0;
 	spr._frame.height = 0;
-	spr._onBitmapLoad();
+	if(_.isV150) {
+		spr._refreshFrame = true;
+		spr._onBitmapLoad(spr.bitmap);
+	} else {
+		spr._onBitmapLoad();
+	}
 };
 
 Sprite_HUDFace.prototype.redrawMask = function() {

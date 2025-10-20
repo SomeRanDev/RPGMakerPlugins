@@ -58,7 +58,7 @@
  * @help
  *
  * Actor Select
- * Version 1.00
+ * Version 1.01
  * SumRndmDde
  *
  *
@@ -129,7 +129,7 @@ var SRD = SRD || {};
 SRD.ActorSelect = SRD.ActorSelect || {};
 
 var Imported = Imported || {};
-Imported["SumRndmDde Actor Select"] = true;
+Imported["SumRndmDde Actor Select"] = 1.01;
 
 (function(_) {
 
@@ -171,8 +171,7 @@ Imported["SumRndmDde Actor Select"] = true;
 
 	var _Game_Interpreter_pluginCommand = Game_Interpreter.prototype.pluginCommand;
 	Game_Interpreter.prototype.pluginCommand = function(command, args) {
-	    _Game_Interpreter_pluginCommand.call(this);
-
+	    _Game_Interpreter_pluginCommand.apply(this, arguments);
 	    if(command.trim().toLowerCase() === 'openactorselect') {
 	    	if(args.length === 1) {
 	    		$gameTemp.setTempVariableStorageforActorId(String(args[0]));

@@ -67,7 +67,7 @@
  *
  * Before anything else, be sure to install a background image:
  *
- *   /img/SumRndmDde/auto-update/Background.png
+ *   /img/SumRndmDde/auto-updates/Background.png
  *
  * You can use the default I created here:
  *

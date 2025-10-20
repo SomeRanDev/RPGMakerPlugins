@@ -326,7 +326,7 @@
  *
  *
  * Alternative Menu Screen: Icons
- * Version 1.01
+ * Version 1.02
  * SumRndmDde
  *
  *
@@ -383,25 +383,28 @@
  *   ~ SumRndmDde
  */
 
-var Imported = Imported || {};
-Imported["SumRndmDde AMS Icons"] = 1.00;
+var SRD = SRD || {};
+SRD.AltMenuScreenIcons = SRD.AltMenuScreenIcons || {};
 
-(function() {
+var Imported = Imported || {};
+Imported["SumRndmDde AMS Icons"] = 1.02;
+
+(function(_) {
 	
-	var icons = {};
-	icons['item'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Item Icon']);
-	icons['skill'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Skill Icon']);
-	icons['equip'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Equip Icon']);
-	icons['status'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Status Icon']);
-	icons['formation'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Formation Icon']);
-	icons['options'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Options Icon']);
-	icons['save'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Save Icon']);
-	icons['gameEnd'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Game End Icon']);
+	_.icons = {};
+	_.icons['item'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Item Icon']);
+	_.icons['skill'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Skill Icon']);
+	_.icons['equip'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Equip Icon']);
+	_.icons['status'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Status Icon']);
+	_.icons['formation'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Formation Icon']);
+	_.icons['options'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Options Icon']);
+	_.icons['save'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Save Icon']);
+	_.icons['gameEnd'] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Game End Icon']);
 
 	for(var i = 1; i <= 20; i++) {
 		var sym = String(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Command Symbol ' + i]);
 		if(sym.trim().length > 0) {
-			icons[sym] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Command Icon ' + i]);
+			_.icons[sym] = Number(PluginManager.parameters('SRD_AltMenuScreen_Icons')['Command Icon ' + i]);
 		}
 	}
 
@@ -498,8 +501,8 @@ Imported["SumRndmDde AMS Icons"] = 1.00;
 		var bitmap = ImageManager.loadSystem('IconSet');
 	    var pw = Window_Base._iconWidth;
 	    var ph = Window_Base._iconHeight;
-	    var sx = icons[symbol] % 16 * pw;
-	    var sy = Math.floor(icons[symbol] / 16) * ph;
+	    var sx = _.icons[symbol] % 16 * pw;
+	    var sy = Math.floor(_.icons[symbol] / 16) * ph;
 	    if(!enabled) this.contents.paintOpacity = 100;
 	    this.contents.blt(bitmap, sx, sy, pw, ph, rect.x + _iconX, rect.y + _iconY);
 	    if(!enabled) this.contents.paintOpacity = 255;
@@ -567,4 +570,4 @@ Imported["SumRndmDde AMS Icons"] = 1.00;
 	if(Imported.YEP_MainMenuManager) {
 		Scene_Menu.prototype.resizeGoldWindow = function() {};
 	}
-})();
+})(SRD.AltMenuScreenIcons);
