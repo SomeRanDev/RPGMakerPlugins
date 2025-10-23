@@ -1,0 +1,61 @@
+name: Bug Report
+description: Report a bug with one of my plugins!
+title: "[Bug]: "
+labels: ["bug"]
+assignees:
+  - SomeRanDev
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: dropdown
+    id: engine
+    attributes:
+      label: What engine are you using?
+      multiple: false
+      options:
+        - RPG Maker MV
+        - RPG Maker MZ
+  - type: input
+    id: plugin_name
+    attributes:
+      label: Name of Plugin
+      description: What is the name of the plugin (or plugins) with a bug?
+      placeholder: ex. SRD_TitleCommandCustomizer.js
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details?
+      description: Please provide an in-depth explanation of the bug and/or how it can be replicated! If there was a crash, please provide the console output with this message!
+      placeholder: Please be specific about issues!
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: What platform is the game running on when you encounter the bug?
+      multiple: true
+      options:
+        - Windows (Desktop)
+        - MacOS (Desktop)
+        - Linux (Desktop)
+        - iOS
+        - Android
+        - Google Chrome (Web Browser)
+        - Firefox (Web Browser)
+  - type: textarea
+    id: replication-project
+    attributes:
+      label: Upload Replication Project
+      description: Please replicate the issue in a fresh RPG Maker project and upload it here! You can upload directly to Github OR provide a link to a platform like Google Drive to download.
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Checkbox
+      description: By checking this box, you agree that you are checking a box.
+      options:
+        - label: I agree that I am checking a box.
+          required: true
