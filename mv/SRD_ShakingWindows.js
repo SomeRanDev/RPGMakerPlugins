@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Shakes the window that your cursor is currently positioned on.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Speed
  * @desc The speed in which the windows shake.
@@ -62,7 +62,7 @@
  *
  * Shaking Windows
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Makes your windows shaky!
@@ -103,7 +103,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

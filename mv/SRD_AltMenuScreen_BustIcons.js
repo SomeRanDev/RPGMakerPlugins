@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Alternative Menu Screen Bust and Icons. Shows busts for the Actor and Icons for the commands! WOWOWOWOWOW!!!
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Item Icon
  * @desc The icon index of the icon used for the "Item" choice.
@@ -336,7 +336,7 @@
  *
  * Alternative Menu Screen: Bust + Icons
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This is a combination of the Bust and Icon menus.
@@ -427,7 +427,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var Imported = Imported || {};

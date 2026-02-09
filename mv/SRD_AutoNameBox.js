@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Requires YEP_MessageCore. Name Boxes can automatically have a name based off of the Face image used.
- * @author SumRndmDde
+ * @author SomeRanDev
  * 
  * @param == Auto Name 1 ==
  * @default
@@ -1506,7 +1506,7 @@
  *
  * Auto Name Box
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  * 
  * This Plugin requires Yanfly's Message Core Plugin which can be found here:
@@ -1572,7 +1572,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Adds a customizable pop-up that can display the results of the Timed Attack.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Parent
  * @desc 'actor'  -  Works better with battle cameras; transforms.
@@ -734,7 +734,7 @@
  *
  * Timed Attack: Results
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Adds a customizable pop-up that can display the results of the Timed Attack.
@@ -808,7 +808,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

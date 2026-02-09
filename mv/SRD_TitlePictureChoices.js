@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Gives developers the capability to add animated pictures as choice commands for the title command window.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Image Data
  * @type struct<Image>[]
@@ -72,7 +72,7 @@
  *
  * Title Picture Choices
  * Version 1.10
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Game Upgrade plugin:
@@ -117,7 +117,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

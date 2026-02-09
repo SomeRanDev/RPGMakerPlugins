@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows developers to preform various camera motions including focusing and zooming.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Default Zoom
  * @desc The default zoom used by your RPG Maker game.
@@ -22,7 +22,7 @@
  *
  * Camera Core
  * Version 1.05
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin allows developers to preform various camera motions including 
@@ -178,7 +178,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

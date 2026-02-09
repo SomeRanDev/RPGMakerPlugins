@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Adds various Bitmap functions to allow color transformations to characters, battlers, and weapons.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Default Font
  * @desc The default font face that Bitmaps initialize with.
@@ -30,7 +30,7 @@
  *
  * Bitmap Upgrade
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin adds various Bitmap functions to allow color transformations to 
@@ -109,7 +109,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

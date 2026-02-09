@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Gives the developer more control over the volume fading of BGM, BGS, and ME.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Replay Fade Time
  * @desc The time, in frames, it takes for BGM or BGS to fade back in after a battle or ME.
@@ -14,7 +14,7 @@
  *
  * Audio Fader
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin gives the developer more control over the volume fading of BGM, 
@@ -67,7 +67,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

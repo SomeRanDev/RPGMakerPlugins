@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Adds more options to the Battle Popups; customization over the attributes of the popups and the ability to add more.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param == Global Options ==
  * @default
@@ -2255,7 +2255,7 @@
  *
  * Battle Popup Customizer
  * Version 1.20
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin adds more options to the Battle Popups!
@@ -2391,7 +2391,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

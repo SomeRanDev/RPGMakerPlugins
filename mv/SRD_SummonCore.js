@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows developers to create skills that summon Actors into the player's party using various parameters.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Battlelog Message
  * @desc The message that appears in the battle log when an Actor is summoned.
@@ -53,7 +53,7 @@
  *
  * Summon Core
  * Version 1.06
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin allows developers to create skills that summon Actors into the 
@@ -156,7 +156,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Provides developers with the ability to add "options" to the Options Menu.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Options
  * @type Struct<Options>[]
@@ -11,7 +11,7 @@
  *
  * Options Creator
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Game Upgrade plugin:
@@ -120,7 +120,7 @@
  *
  *
  * Until next time!
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

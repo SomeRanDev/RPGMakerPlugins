@@ -1,7 +1,7 @@
 /*:
  * 
  * @plugindesc Allows you to speed up your game during testing!
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Playtesting Only?
  * @desc Set this to 'true', and this Plugin will lock itself unless you are playtesting within the RPG Maker program.
@@ -50,7 +50,7 @@
  *
  * Debug Speed Up!
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * For the most part, this Plugin is very simple:
@@ -94,7 +94,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows developers to create skills that prompt players to make a second input after the original skill input.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Default Style
  * @desc The default style used for the extend skill window.
@@ -29,7 +29,7 @@
  *
  * Skill Extender
  * Version 1.04
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin allows developers to create skills that prompt players to make a 
@@ -86,7 +86,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

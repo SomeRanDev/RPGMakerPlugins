@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows developers to set a map to be used as the background of their title screen.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Map ID
  * @desc The ID of the map used in the Title Screen.
@@ -10,7 +10,7 @@
  *
  * Title Map Background
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin allows developers to set a map to be used as the background of 
@@ -56,7 +56,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

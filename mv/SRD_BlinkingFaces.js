@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Adds blinking animation to your Actors in the dialogue boxes.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Use Default Blinking
  * @desc If set to 'true', all faces without explicit blinking animation set will use default blinking animation.
@@ -476,7 +476,7 @@
  *
  * Blinking Faces
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin allows you to add a "blinking" animation to the face images
@@ -561,7 +561,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

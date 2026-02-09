@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows developers to create summons that replace the user or party while active.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Allow Turn Reset
  * @desc If 'true', then the battle will skip all turns and return to the input phase when the party is replaced.
@@ -10,7 +10,7 @@
  *
  * Replace Summons
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Summon Core plugin:
@@ -55,7 +55,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

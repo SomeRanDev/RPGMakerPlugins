@@ -1,7 +1,7 @@
 /*:
  * @plugindesc A spell checking utility for...checking your spelling...
  * Be sure to install the word bank!
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Word Bank File
  * @desc The source file that contains all the words you wish to check against.
@@ -23,7 +23,7 @@
  *
  * Spell Check
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This is a utility/debug Plugin that can be used to check your spelling
@@ -74,7 +74,10 @@
  *
  *
  * Until next time,
- * 
+ *
+ *
+ *
+ * ... hello?
  */
 
 var SRD = SRD || {};

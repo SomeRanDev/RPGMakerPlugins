@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows developers to set up automatic updates to occur whenever a player plays the game.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Update Text URL
  * @desc The URL for the game to download the "Update Text" file which determines which files need to be updated.
@@ -54,7 +54,7 @@
  *
  * Auto Updater
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin allows developers to set up automatic updates to occur whenever a 
@@ -144,7 +144,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Replaces the default map Slip Damage system with a new system that gives more control over State damage on the map.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Default Slip Damage
  * @desc If this is 'true', states will have Slip Damage turned on by default
@@ -35,7 +35,7 @@
  *
  * Map Slip Damage
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin replaces the default Slip Damage system with a new system that 
@@ -131,7 +131,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

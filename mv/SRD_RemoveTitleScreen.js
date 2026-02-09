@@ -1,13 +1,13 @@
 /*:
  * @plugindesc This Plugin removes the title screen from the game.
  *
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @help
  *
  * Remove Title Screen
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Important Notes:
@@ -26,7 +26,7 @@
  * https://www.youtube.com/SumRndmDde
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

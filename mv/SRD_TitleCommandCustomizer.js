@@ -1,7 +1,7 @@
 /*:
  * @plugindesc Allows customization over the Title Command Window.
  * Can customize size, position, rows, columns, and commands.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Command Data
  * @type struct<Command>[]
@@ -90,7 +90,7 @@
  *
  * Title Command Customizer
  * Version 1.11
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Game Upgrade plugin:
@@ -188,7 +188,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

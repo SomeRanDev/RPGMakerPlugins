@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows for developers to customize all the visible parameters that can be seen on the Equip Screen.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Default Pos Color
  * @desc The default color used for positive stat gains.
@@ -1726,7 +1726,7 @@
  *
  * Equip Compare Upgrade
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin allows for developers to customize all the visible stats that 
@@ -1788,7 +1788,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

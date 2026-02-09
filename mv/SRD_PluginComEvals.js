@@ -1,11 +1,11 @@
 /*:
  * @plugindesc By using a specific format, this plugin now allows for JavaScript evals within plugin commands.
- * @author SumRndmDde
+ * @author SomeRanDev
  * @help
  *
  * Plugin Command Evals
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin allows developers to have JavaScript evals in all plugin 
@@ -60,7 +60,7 @@
  *
  *
  * Until next time!
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

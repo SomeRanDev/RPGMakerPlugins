@@ -1,11 +1,11 @@
 /*:
  * @plugindesc Makes it so the frame of from Window Skins repeats like a pattern instead of stretching.
- * @author SumRndmDde
+ * @author SomeRanDev
  * @help
  *
  * Window Frame Anti-Stretch
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  * By default, the frame around a window stretches the texture used
  * by a custom Window Skin.

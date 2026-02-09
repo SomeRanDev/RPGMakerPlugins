@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows custom characters to have multiple expressions to be used in Show Text events.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Face Data
  * @type Struct<Customs>[][]
@@ -11,7 +11,7 @@
  *
  * Character Creator EX: Message Faces
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Character Creator EX plugin:
@@ -94,7 +94,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

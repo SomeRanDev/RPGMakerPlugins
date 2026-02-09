@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows players to distribute points to different stats of the Actors at his or her discretion.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Default Stats
  * @desc A list of stats Actors can distribute to by default.
@@ -89,7 +89,7 @@
  *
  * Stat Distribution
  * Version 1.07
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin allows players to distribute points to different stats of the 
@@ -229,7 +229,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

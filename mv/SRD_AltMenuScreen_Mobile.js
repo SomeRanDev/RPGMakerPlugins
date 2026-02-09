@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Alternative Menu Screen: makes the commands bigger and easier to press on mobile devices.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param "Leave Menu" Command
  * @desc Set this to 'true' and a Leave Menu Command will be added to the command list in the menu.
@@ -53,7 +53,7 @@
  *
  * Alternative Menu Screen: Mobile
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Gives your game an alternative menu screen.
@@ -63,7 +63,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
  var Imported = Imported || {};

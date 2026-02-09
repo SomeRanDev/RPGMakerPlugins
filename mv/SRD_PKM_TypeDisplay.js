@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Pokemon Plugin: Displays the Elements assigned to the Actor in their status. (Requires SRD_PKM_TypeSystem)
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param No Element Text
  * @desc This will be the text that displays if the Actor does not have any Elements assigned to them.
@@ -131,7 +131,7 @@
  *
  * Pokemon Type Display
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  * 
  * This is an extension Plugin for SRD_PKM_TypeSystem.
@@ -183,7 +183,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

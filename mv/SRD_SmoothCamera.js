@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Gives the camera of your game smoother motion during gameplay and specific camera motions.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Delay Power
  * @desc A numerical value used to create the delay of the camera to the target's movement. The higher the value, the greater the delay.
@@ -14,7 +14,7 @@
  *
  * Smooth Camera
  * Version 1.02
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Camera Core plugin:
@@ -53,7 +53,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

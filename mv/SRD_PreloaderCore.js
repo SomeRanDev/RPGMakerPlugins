@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows developers to preload specific audio and images before running the game through a new pre-title scene.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Custom Background
  * @desc A custom background image for the preload scene. 
@@ -254,7 +254,7 @@
  *
  * Preloader Core
  * Version 1.10
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Game Upgrade plugin:
@@ -336,7 +336,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

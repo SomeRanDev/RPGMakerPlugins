@@ -1,11 +1,11 @@
 /*:
  * @plugindesc Forces an automatic wait event to occur while videos are playing.
- * @author SumRndmDde
+ * @author SomeRanDev
  * @help
  *
  * Video Wait
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  * Changelog (v1.01): Fixed "Wait" Event
  *

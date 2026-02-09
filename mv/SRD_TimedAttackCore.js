@@ -1,6 +1,6 @@
 /*: 
  * @plugindesc Adds a system which forces the user to time certain inputs to preform actions during battle.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Enable Touch?
  * @desc If set to 'true', the Player can touch the screen in order to interact with the Timed Attacks.
@@ -121,7 +121,7 @@
  *
  * Timed Attack Core
  * Version 1.23
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin adds a system which forces the user to time certain inputs 
@@ -232,7 +232,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

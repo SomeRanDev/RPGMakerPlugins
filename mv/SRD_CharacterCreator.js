@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows players to create their own custom characters.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Wait for Loading
  * @desc If 'true', then the scene will wait for the resources to load.
@@ -1634,7 +1634,7 @@
  *
  * Character Creator
  * Version 1.10
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This is a plugin that allows players to create their own custom characters 
@@ -1781,7 +1781,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

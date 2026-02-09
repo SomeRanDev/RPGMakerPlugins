@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows you to check for Input within Yanfly's Action Sequences.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param == Custom Inputs ==
  * @default
@@ -459,7 +459,7 @@
  *
  * Sequence Input
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  *
@@ -579,7 +579,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

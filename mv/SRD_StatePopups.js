@@ -1,6 +1,6 @@
 /*:
  * @plugindesc An extension to the Battle Popup Customizer that adds popups that display the addition or removal of States and Buffs.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param == States Defaults ==
  * @default
@@ -429,7 +429,7 @@
  *
  * State Popups
  * Version 1.02
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Battle Popup Customizer plugin:
@@ -502,7 +502,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

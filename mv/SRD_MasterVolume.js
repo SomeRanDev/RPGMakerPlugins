@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Adds an option in the Options menu to change the game's master volume.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Option Name
  * @desc The name that appears in the Options menu for the master volume option.
@@ -20,7 +20,7 @@
  *
  * Master Volume
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Adds an option in the Options menu to change the game's master volume.
@@ -41,7 +41,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

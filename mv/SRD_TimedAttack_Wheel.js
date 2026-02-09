@@ -1,6 +1,6 @@
 /*: 
  * @plugindesc A ring appears on screen and commands cycle around it. The Player must press the commands as they appear on the top.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param "Z" Press Condition
  * @desc The JavaScript condition that must be true for the "Z" button to be pressed.
@@ -97,7 +97,7 @@
  *
  * Timed Attack: Wheel
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin requires the Timed Attack Core Plugin (SRD_TimedAttackCore)
@@ -216,7 +216,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

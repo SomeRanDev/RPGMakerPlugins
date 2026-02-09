@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows developers to use Walk Character images as side-view battlers for Actors.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Default Scale
  * @desc The default scale of the character images for battlers when one is not specified.
@@ -35,7 +35,7 @@
  *
  * Walk Character Battlers
  * Version 1.02
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin allows developers to use Walk Character images as side-view 
@@ -189,7 +189,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

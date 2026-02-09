@@ -2,13 +2,13 @@
  * @plugindesc This Plugin removes the faded out "continue" choice from
  * the choices at the title screen.
  *
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @help
  *
  * Remove Faded Continue
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Important Notes:
@@ -28,7 +28,7 @@
  * https://www.youtube.com/SumRndmDde
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

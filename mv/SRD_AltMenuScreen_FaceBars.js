@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Extension Plugin. Use this with a Face Alt Menu Screen to add HP and MP bars to the faces.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Bar Rows
  * @desc Set this to '1' or '2' to have 1 or 2 rows.
@@ -23,7 +23,7 @@
  * Alternative Menu Screen: Face Bars
  * Extension Plugin
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This is an extension plugin that requires a 
@@ -34,7 +34,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

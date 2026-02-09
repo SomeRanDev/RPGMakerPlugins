@@ -1,6 +1,6 @@
 /*: 
  * @plugindesc Adds a new Timed Attack system involving circles that skrink and must be stopped at their smallest point.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param == Default Props. ==
  * @default
@@ -64,7 +64,7 @@
  *
  * Timed Attack: Circle
  * Version 1.11
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin requires the Timed Attack Core Plugin (SRD_TimedAttackCore)
@@ -160,7 +160,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

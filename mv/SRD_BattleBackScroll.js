@@ -1,11 +1,11 @@
 /*:
  * @plugindesc Allows developers to add movement to the two backgrounds within battles.
- * @author SumRndmDde
+ * @author SomeRanDev
  * @help
  *
  * Battle Background Scroll
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin allows the backgrounds within battles to scroll in both the 
@@ -67,7 +67,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

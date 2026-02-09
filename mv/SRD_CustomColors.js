@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows you to customize all of the Window.png colors through Parameters.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Default Color
  * @desc The color used if you attempt to use a blank Text Color or a Text Color ID that does not exist.
@@ -265,7 +265,7 @@
  *
  * Custom Colors
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  * 
  * By default, the text colors used by your game are obtained
@@ -397,7 +397,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

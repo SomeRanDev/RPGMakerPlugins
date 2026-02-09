@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows you to add/customize backgrounds and change window opacity for all menu scenes.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Scale Background
  * @desc Set this to 'true' and the backgrounds will automatically scale to the window size.
@@ -734,7 +734,7 @@
  *
  * Menu Backgrounds
  * Version 2.05
- * SumRndmDde
+ * SomeRanDev
  *
  * 
  * This allows you to give all the menu pages of your menu custom 
@@ -826,7 +826,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

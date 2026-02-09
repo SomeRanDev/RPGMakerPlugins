@@ -1,6 +1,6 @@
 /*: 
  * @plugindesc A Timed Attack that requires the Player to push the arrow keys in the sequence shown on screen.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Up Condition
  * @desc The JavaScript condition that must be true for the "Up" command to be processed.
@@ -105,7 +105,7 @@
  *
  * Timed Attack: Arrows
  * Version 1.03
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin requires the Timed Attack Core Plugin (SRD_TimedAttackCore)
@@ -203,7 +203,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

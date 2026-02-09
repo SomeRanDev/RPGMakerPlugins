@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Alternative Menu Screen: has a command menu on the bottom and a 2 by 2 Actor selector.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Gold Position
  * @desc The position of the gold window. 
@@ -29,7 +29,7 @@
  *
  * Alternative Menu Screen: Down
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Changelog (v1.01): Fixed Shop Choices
@@ -42,7 +42,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

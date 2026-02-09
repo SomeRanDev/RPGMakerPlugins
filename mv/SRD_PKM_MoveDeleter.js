@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Pokemon Plugin: Allows the Player to call upon a menu to delete Skills. (Requires SRD_PKM_4MovesOnly)
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @help
  *
@@ -8,7 +8,7 @@
  *
  * Pokemon Move Deleter
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  * This is an extention Plugin of SRD_PKM_4MovesOnly
  *
@@ -91,7 +91,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

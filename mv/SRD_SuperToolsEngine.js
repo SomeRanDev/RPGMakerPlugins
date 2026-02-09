@@ -1,6 +1,6 @@
 /*:
  * @plugindesc The heart of all maker-style plugins; it adds a playtesting editor that can be opened with F12.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Connect Editor
  * @type boolean
@@ -26,7 +26,7 @@
  *
  * Super Tools Engine
  * Version 1.31
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin is the core of all maker-style plugins; it adds a playtest editor 
@@ -145,7 +145,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

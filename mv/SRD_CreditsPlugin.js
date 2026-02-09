@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Adds a scene to your game that allows developers to give organized credits to people.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Credit Data
  * @type struct<Categories>[]
@@ -69,7 +69,7 @@
  *
  * Credits Plugin
  * Version 1.11
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Game Upgrade plugin:
@@ -135,7 +135,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Gives you more customization over a Skill's or Item's "Repeat" functionality.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Minimum Repeat
  * @desc The lowest repeat count that is allowed in the game. 
@@ -16,7 +16,7 @@
  *
  * Repeat Upgrade
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  * 
  * Normally, RPG Maker MV allows you to set a constant number between 
@@ -117,7 +117,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

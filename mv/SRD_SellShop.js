@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows creation of a shop that can be used to sell certain items at special prices.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Price Multiplier
  * @desc By default, items can only be sold for 0.5 price. This allows to you customize the modifier for sell shops only.
@@ -10,7 +10,7 @@
  * 
  * Sell Shop
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  * Random Credits:
  * ~ Based off of request that was based off of Himeworks' VX Ace script ~
@@ -69,7 +69,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Gives developers move control over the visual and mechanical aspects of the game's timer system.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Timer Format
  * @desc The format of the timer text. Use the following codes:
@@ -85,7 +85,7 @@
  *
  * Timer Upgrade
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin gives developers move control over the visual and mechanical 
@@ -172,7 +172,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

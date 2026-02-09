@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Improves upon the "Name Input" screen for your RPG Maker MV game.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Keyboard Mode?
  * @desc 'true'   - Use keyboard to input characters
@@ -158,7 +158,7 @@
  *
  * Name Input Upgrade
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  * 
  * That darn boring, old Name Input screen.
@@ -225,7 +225,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

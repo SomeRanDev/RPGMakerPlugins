@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows you to call a screen to select an Actor
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Num of Visible Rows
  * @desc The number of rows on the window. Can be JavaScript eval.
@@ -59,7 +59,7 @@
  *
  * Actor Select
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Allows you to call a screen to select an Actor.
@@ -122,7 +122,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

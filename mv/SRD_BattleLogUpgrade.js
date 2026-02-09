@@ -1,7 +1,7 @@
 /*:
  * @plugindesc Allows more customization of the BattleLog! 
  * The position, color, and mechanics can be changed!
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Reverse Mode
  * @desc 'false'  -  Newest logs are placed in new position.
@@ -93,7 +93,7 @@
  *
  * Battle Log Upgrade
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin allows you to have greater control over the Battle Log.
@@ -162,7 +162,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

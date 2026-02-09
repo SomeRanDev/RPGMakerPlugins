@@ -1,6 +1,6 @@
 /*:
  * @plugindesc A Plugin that allows you to manipulate the information presented on the Gold Window.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Rows
  * @desc The number of rows in the gold window.
@@ -329,7 +329,7 @@
  *
  * Gold Window Customizer
  * Version 1.06
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * A Plugin that allows you to manipulate the information presented on the 
@@ -384,7 +384,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

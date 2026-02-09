@@ -1,13 +1,13 @@
 /*:
  * @plugindesc This Plugin skips the title screen if there is no save file present.
  *
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @help
  *
  * Skip Title Screen Without Save
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Important Notes:
@@ -25,7 +25,7 @@
  * https://www.youtube.com/SumRndmDde
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

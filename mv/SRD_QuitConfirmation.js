@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Provides a confirmation popup prior to the player leaving the game, confirming whether they wish to leave.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Enable Leave Confirmation
  * @type boolean
@@ -44,7 +44,7 @@
  *
  * Quit Confirmation
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Window Upgrade plugin:
@@ -88,7 +88,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

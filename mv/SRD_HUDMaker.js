@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows developers to create their own map-based HUD through an in-game GUI window!
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param HUD Configurations
  * @type text[]
@@ -40,7 +40,7 @@
  *
  * HUD Maker
  * Version 1.6
- * sumrnDmDde
+ * somErandEv
  *
  *
  * This plugin allows developers to create their own map-based HUD through 
@@ -107,7 +107,7 @@
  *
  *
  * Until next time,
- *   ~ sumrnDmDde
+ *   ~ somErandEv
  *
  */
 

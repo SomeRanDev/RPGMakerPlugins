@@ -1,11 +1,11 @@
 /*:
  * @plugindesc Adds more Notetag options for YEP_ExtraEnemyDrops for bulk processing
- * @author SumRndmDde
+ * @author SomeRanDev
  * @help
  *
  * Enemy Bulk Drops
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Yanfly's Extra Enemy Drops Plugin is required.
@@ -118,7 +118,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

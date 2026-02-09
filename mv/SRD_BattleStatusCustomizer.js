@@ -1,6 +1,6 @@
 /*:
  * @plugindesc (PART 1) Gives control over the information provided within the Battle Status windows for each Actor.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Default Parts Used
  * @desc A list of all the parts Actors use by default. 
@@ -266,7 +266,7 @@
  *
  * Battle Status Customizer
  * Version 1.06
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin gives developers control over the information provided within 
@@ -393,7 +393,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

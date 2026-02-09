@@ -1,6 +1,6 @@
 /*: 
  * @plugindesc Allows Timed Attacks to be called upon within Yanfly's Action Sequences.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @help
  *
@@ -106,7 +106,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var Imported = Imported || {};

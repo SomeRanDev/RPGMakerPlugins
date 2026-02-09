@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Alternative Menu Screen: shows the faces of the Actors along with the extra information!
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Information Order
  * @desc List the keywords to order the information. Exclude unwanted info. Ex: playtime, location, bgm, battles
@@ -77,7 +77,7 @@
  *
  * Alternative Menu Screen: Information
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Gives your game an alternative menu screen.
@@ -88,7 +88,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var Imported = Imported || {};

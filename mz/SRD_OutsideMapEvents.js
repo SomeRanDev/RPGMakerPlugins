@@ -2,7 +2,7 @@
  * @target MZ
  * @plugindesc Let's you place events JUST outside of the map.
  * @author SomeRanDev
- * @url https://youtube.com/@SomeRanDev
+ * @url https://someran.dev/links
  * 
  * @help
  * ============================================================================
@@ -27,13 +27,13 @@
  *  Terms of Use
  * ============================================================================
  *
- * http://sumrndm.site/terms-of-use/
+ * https://someran.dev/rpgmaker/terms/
  *
  * ============================================================================
  *  End of Help File
  * ============================================================================
  *
- * https://www.youtube.com/@SumRndmDde (good content)
+ * https://someran.dev/youtube (good content)
  * https://twitch.tv/SomeRanDev (livestreams maybe)
  * https://bsky.app/profile/someran.dev (active gamedev posts maybe)
  * http://sumrndm.site

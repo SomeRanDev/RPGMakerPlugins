@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Shows a list of credits that move up the screen.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Credits File Source
  * @desc The file location and name of the text file that contains the credits information. 
@@ -70,7 +70,7 @@
  *
  * Movie Credits
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Allows you to show cinematic credits in your game.
@@ -163,7 +163,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

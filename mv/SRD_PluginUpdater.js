@@ -1,11 +1,11 @@
 /*:
  * @plugindesc Adds a tool to the Super Tools Engine that checks for updates on plugins from SumRndmDde's library.
- * @author SumRndmDde
+ * @author SomeRanDev
  * @help
  *
  * Plugin Updater
  * Version 1.21
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin adds a tool to the Super Tools Engine that checks for updates on 
@@ -45,7 +45,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

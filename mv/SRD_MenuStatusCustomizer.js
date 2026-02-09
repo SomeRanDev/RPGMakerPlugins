@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows you to have more customization over the Actor Statuses that appear in the main part of the menu.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param == Retain Mode ==
  * @default
@@ -345,7 +345,7 @@
  *
  * Menu Status Customizer
  * Version 1.10
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Allows you to have more customization over the Actor Statuses that appear 
@@ -446,7 +446,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

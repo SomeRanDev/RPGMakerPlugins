@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Pokemon Plugin: Adds trainer sprites for both male and female independent of the party members.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Initial Gender
  * @desc The gender your Player will start with. Select between 'male' or 'female'.
@@ -49,7 +49,7 @@
  *
  * Pokemon Trainer Sprite
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * ==========================================================================
@@ -113,7 +113,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

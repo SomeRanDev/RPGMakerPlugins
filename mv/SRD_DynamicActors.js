@@ -1,12 +1,12 @@
 /*:
  * @plugindesc Allows Actors to have their sprites and images dynamically change based on their Class and Equips.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @help
  *
  * Dynamic Actors
  * Version 1.03
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Character Creator plugin:
@@ -61,7 +61,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

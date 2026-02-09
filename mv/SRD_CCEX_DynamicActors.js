@@ -1,12 +1,12 @@
 /*:
  * @plugindesc Allows Actors to have their images dynamically change based on their class or equipment.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @help
  *
  * Character Creator EX: Dynamic Actors
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Character Creator plugin:
@@ -61,7 +61,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

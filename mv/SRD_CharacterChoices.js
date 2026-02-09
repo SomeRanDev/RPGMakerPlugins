@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows the use of the "Show Choices" event to have the Player to select an animated Character.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Walking Speed
  * @desc The rate of the Character walking animation for the Characters shown. Lower numbers are faster; higher, slower.
@@ -31,7 +31,7 @@
  *
  * Character Choices
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Using this Plugin, you can allow the player to select a Character
@@ -99,7 +99,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

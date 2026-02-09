@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows custom characters to have multiple expressions to be used in Show Text events.
- * @author SumRndmDde
+ * @author SomeRanDev
   *
  * @param == Custom Face 1 ==
  * @default
@@ -556,7 +556,7 @@
  *
  * Custom Faces
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Character Creator plugin:
@@ -632,7 +632,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

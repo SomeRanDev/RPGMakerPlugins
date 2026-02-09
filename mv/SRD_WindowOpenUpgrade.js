@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows you to customize the Window "opening" and "closing" animation.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Opening Speed
  * @desc The speed in which the Window opens.
@@ -47,7 +47,7 @@
  *
  * Window Open Upgrade
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin that allows you to customize the animation of a Window when 
@@ -88,7 +88,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

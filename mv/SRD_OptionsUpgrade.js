@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Upgrades the Options Menu. Commands are placed into different categories and a description window has been added.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Categories
  * @desc A list of all of the categories in the Options Menu.
@@ -905,7 +905,7 @@
  *
  * Options Upgrade
  * Version 1.02
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin upgrades the Options Menu!
@@ -965,7 +965,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

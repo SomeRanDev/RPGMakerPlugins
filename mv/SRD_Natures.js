@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Replicates the Nature system from Pokemon games to affect Actors.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Buff Boost Ratio
  * @desc The value that is multiplied by the stats that are buffed from the Nature.
@@ -1091,7 +1091,7 @@
  *
  * Natures
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Copy Actors (SRD_CopyActors) plugin.
@@ -1174,7 +1174,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

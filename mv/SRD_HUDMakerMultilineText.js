@@ -23,7 +23,7 @@
  * If you have questions, or if you enjoyed this Plugin, please check
  * out my YouTube channel!
  *
- * https://www.youtube.com/@SomeRanDev
+ * https://someran.dev/youtube
  *
  *
  * Until next time,

@@ -1,12 +1,12 @@
 /*:
  * @plugindesc Alternative Menu Screen: Similar to the normal menu but oriented to the right.
- * @author SumRndmDde
+ * @author SomeRanDev
  * @help
  *
  *
  * Alternative Menu Screen: Right
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Gives your game an alternative menu screen.
@@ -16,7 +16,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

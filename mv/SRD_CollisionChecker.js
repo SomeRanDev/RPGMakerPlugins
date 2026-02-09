@@ -1,11 +1,11 @@
 /*:
  * @plugindesc Allows developers to check the collision of various coordinates/directions on the map for event collision.
- * @author SumRndmDde
+ * @author SomeRanDev
  * @help
  *
  * Collision Checker
  * Version 1.02
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This is a plugin that allows developers to check the collision of various 
@@ -225,7 +225,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

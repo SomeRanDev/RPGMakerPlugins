@@ -1,6 +1,6 @@
 /*:
  * @plugindesc (PART 2) The second part of the Battle Status Customizer. This allows you to manipulate gauges.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param == Global Settings ==
  * @default
@@ -1953,7 +1953,7 @@
  *
  * Battle Status Customizer (Part 2)
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Read the Help Section of Part 1 for the information.
@@ -1974,7 +1974,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

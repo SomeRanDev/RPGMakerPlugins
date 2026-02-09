@@ -1,6 +1,6 @@
 /*:
  * @plugindesc This plugin allows developers to customize the window set up of battles within their game.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Force Within Screen
  * @desc All windows listed will be forced to remain within the screen. Use the names from Parameters. Separate with commas. 
@@ -1436,7 +1436,7 @@
  *
  * Battle GUI Core
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin allows developers to customize the window set up of battles 
@@ -1583,7 +1583,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

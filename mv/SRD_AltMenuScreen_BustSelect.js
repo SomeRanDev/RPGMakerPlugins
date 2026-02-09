@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Alternative Menu Screen Bust Select. Uses busts to select Actors in the menu. It also displays Side View Battlers.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Show Gold Window
  * @desc Set this to 'true' and the menu will contain the gold window.
@@ -146,7 +146,7 @@
  *
  * Alternative Menu Screen: Bust Select
  * Version 1.02
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Changelog: Version 1.01 
@@ -227,7 +227,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

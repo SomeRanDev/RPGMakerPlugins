@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Adds a Font selector to the Options Window that allows the Player to choose a Font for the game.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Option Name
  * @desc The name used by the Font option.
@@ -772,7 +772,7 @@
  *
  * Font Option
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin adds a Font selector to the Options Window that allows 
@@ -844,7 +844,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

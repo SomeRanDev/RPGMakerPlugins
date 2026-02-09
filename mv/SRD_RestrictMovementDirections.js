@@ -1,7 +1,7 @@
 /*:
  * 
  * @plugindesc Restricts moving is specific directions based on conditions or switches.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Move Up Switch
  * @desc Set this to the Switch ID that would restrict the Player from moving up when ON. Set to 0 to disallow.
@@ -39,7 +39,7 @@
  *
  * Restrict Movement Directions
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  * There are no Plugin Commands or Notetags.
  *

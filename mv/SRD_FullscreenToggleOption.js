@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Adds a Fullscreen Toggle to the Options Window
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Option Name
  * @desc The name used by the Fullscreen Toggle option.
@@ -24,7 +24,7 @@
  *
  * Fullscreen Toggle Option
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Important Notes:
@@ -48,7 +48,7 @@
  * https://www.youtube.com/SumRndmDde
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows Common Events to be played at the end of the battle depending on the results.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Win Common Event
  * @desc This is the Common Event that plays at the end of a battle that the party wins. Set to 0 to disallow.
@@ -26,7 +26,7 @@
  *
  * Battle End Events
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin allows Common Events to be played at the end of the battle 
@@ -71,7 +71,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

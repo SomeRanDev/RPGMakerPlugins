@@ -1,6 +1,6 @@
 /*: 
  * @plugindesc Adds a new Timed Attack system that requires the Player to mash a button to get a gauge to a certain point.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param == Default Props. ==
  * @default
@@ -94,7 +94,7 @@
  *
  * Timed Attack: Mash
  * Version 1.10
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin requires the Timed Attack Core Plugin (SRD_TimedAttackCore)
@@ -194,7 +194,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

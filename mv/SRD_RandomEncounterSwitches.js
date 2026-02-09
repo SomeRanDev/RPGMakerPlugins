@@ -1,7 +1,7 @@
 /*: 
  * @plugindesc A plugin that allows you to control encounters for multiple different maps using multiple different switches.
  *
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Start w/o RndmEnctrs
  * @desc If you want random encounters to be active when the switch is on, set this to "true"; for the opposite, "false".
@@ -347,7 +347,7 @@
  *
  * Random Encounter Switches
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Important Notes:
@@ -380,7 +380,7 @@
  * https://www.youtube.com/SumRndmDde
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

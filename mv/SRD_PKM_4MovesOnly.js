@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Pokemon Plugin: Restricts the maximum amount of skills an Actor can learn to 4.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param == Forget Window ==
  * @default
@@ -66,7 +66,7 @@
  *
  * Pokemon 4 Moves Only
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * The name says it all.
@@ -142,7 +142,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 //Ugh, I think I'm gonna have to start actually making this

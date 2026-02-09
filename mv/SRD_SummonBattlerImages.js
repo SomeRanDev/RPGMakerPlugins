@@ -1,11 +1,11 @@
 /*:
  * @plugindesc Allows summoned Actors to use static battler images as opposed to side-view Actor battler images.
- * @author SumRndmDde
+ * @author SomeRanDev
  * @help
  *
  * Summon Battler Images
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Summon Core plugin:
@@ -58,7 +58,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Using this Plugin allows you to customize the Window Skin used by each, individual Window in your game.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param == Main Windows ==
  * @default
@@ -449,7 +449,7 @@
  * 
  * Individual Skins for Windows
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin allows you to customize the Window Skins for each individual
@@ -481,7 +481,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

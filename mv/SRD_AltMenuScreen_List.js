@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Alternative Menu Screen: shows a list of Actor names, HP, and MP and gives more room for larger parties.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param List Columns
  * @desc The amount of columns in the list of Actors in the menu. 
@@ -31,7 +31,7 @@
  *
  * Alternative Menu Screen: Up
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Changelog (v1.01): Fixed Shop Choices
@@ -44,7 +44,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

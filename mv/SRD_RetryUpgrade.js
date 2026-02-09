@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Takes players to a new scene after retrying a battle. Allows users to manage skills, equips, options, etc.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Retry BGM
  * @desc The Retry Scene's BGM. Leave blank to disallow.
@@ -419,7 +419,7 @@
  *
  * Retry Upgrade
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Game Over Core plugin:
@@ -485,7 +485,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

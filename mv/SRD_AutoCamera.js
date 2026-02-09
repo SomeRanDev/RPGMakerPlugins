@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows developers to set the camera to move based on what regions the player moves onto.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Reset Duration
  * @desc The duration used to reset the zoom back to normal when the player steps on a tile that is not a "camera region".
@@ -2110,7 +2110,7 @@
  *
  * Auto Camera
  * Version 1.02
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Camera Core plugin:
@@ -2186,7 +2186,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

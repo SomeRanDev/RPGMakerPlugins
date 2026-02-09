@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Gives more options for one's Game Over scene. Common Events can be called and a Retry function has been added.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Default Image
  * @desc Default image used for the "Game Over" scene from 
@@ -65,7 +65,7 @@
  *
  * Game Over Core
  * Version 1.07
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin gives more options for one's Game Over scene. Common Events can 
@@ -141,7 +141,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

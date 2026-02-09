@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Adds a Window Skin selector to the Options Window that allows the Player to choose a Window Skin for the game.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Option Name
  * @desc The name used by the Window Skin option.
@@ -772,7 +772,7 @@
  *
  * Window Skin Option
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin adds a Window Skin selector to the Options Window that allows 
@@ -830,7 +830,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

@@ -1,6 +1,6 @@
 /*:
  * @plugindesc An alternative menu based off of the menu from Kingdom Hearts.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param == Basic Options ==
  * @default
@@ -315,7 +315,7 @@
  *
  * Alternative Menu Screen: Kingdom Hearts
  * Version 1.03
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Gives your game an alternative menu screen.
@@ -381,7 +381,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

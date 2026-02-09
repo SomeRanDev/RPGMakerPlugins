@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Shows a "Press Start" styled phrase and waits for input before opening the Command Window on the Title Screen.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Shown Text
  * @desc This is the text that is shown on the Title Screen.
@@ -66,7 +66,7 @@
  *
  * Press Start
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  * 
  * This Plugin is plug-in and play.
@@ -116,7 +116,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

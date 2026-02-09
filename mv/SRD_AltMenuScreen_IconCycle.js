@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Alternative Menu Screen Icon Cycle. Uses Icons and allows the Player to cycle through them.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Item Icon
  * @desc The icon index of the icon used for the "Item" choice.
@@ -332,7 +332,7 @@
  *
  * Alternative Menu Screen: Icon Cycle
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Changelog (v1.01): Fixed Actor Window Cancel
@@ -384,7 +384,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var Imported = Imported || {};

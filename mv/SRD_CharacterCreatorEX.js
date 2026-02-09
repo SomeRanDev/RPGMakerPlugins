@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows players to create their own custom characters.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Layers
  * @desc This is the list in which layers are placed in the image. These are based off of the actual Folder names.
@@ -112,7 +112,7 @@
  *
  * Character Creator EX
  * Version 1.03
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This is a plugin that allows players to create their own custom characters 
@@ -379,7 +379,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

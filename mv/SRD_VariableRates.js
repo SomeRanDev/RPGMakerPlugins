@@ -1,7 +1,7 @@
 /*:
  *
  * @plugindesc Increments/decrements certain Game Variables by a certain rate depending on a certain condition.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  *
  * @param === Conditions ===
@@ -1085,7 +1085,7 @@
  *
  * Variable Rates
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Important Notes:
@@ -1305,7 +1305,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

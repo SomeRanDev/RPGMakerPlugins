@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows you to customize your Random Encounter Battle Intro with great detail. Please use "Help" in top-right.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  *
  * @param Hide Characters
@@ -1460,7 +1460,7 @@
  *
  * Custom Battle Intro
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  * 
  * 
  * Allows you to customize your own random encounter battle intro!
@@ -1641,7 +1641,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDdes
+ *   ~ SomeRanDevs
  */
 
 var SRD = SRD || {};

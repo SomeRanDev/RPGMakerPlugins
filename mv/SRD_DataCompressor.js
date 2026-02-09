@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows developers to drastically reduce the file sizes of data files; helps protect data files from being reopened.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Compress Data?
  * @desc If 'true', the data files will be compressed when you playtest the game; this is auto-disabled in exported games.
@@ -15,7 +15,7 @@
  *
  * Data Compressor
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin allows developers to drastically reduce the file sizes of data 
@@ -56,7 +56,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

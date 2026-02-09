@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Pokemon Plugin: Adds the Pokemon type system to your game using RPG Maker MV's elements.
- * @author SumRndmDde
+ * @author SomeRanDev
  * 
  * @param No Default System?
  * @desc Setting to 'true' removes the default elemental rates from calculation. Otherwise, they will be combined with PKM.
@@ -487,7 +487,7 @@
  *
  * Pokemon Type System
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  * ==========================================================================
  * Introduction
@@ -649,7 +649,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

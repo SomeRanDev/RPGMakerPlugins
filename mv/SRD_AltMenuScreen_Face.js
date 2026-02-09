@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Alternative Menu Screen: shows only Actor faces for Actor menu displays and gives more room for larger parties.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Face Padding
  * @desc This is the amount of padding surrounding the Actor's face.
@@ -35,7 +35,7 @@
  *
  * Alternative Menu Screen: Face
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Gives your game an alternative menu screen.
@@ -45,7 +45,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

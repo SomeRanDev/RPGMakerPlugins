@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Adds more options for waiting in your events.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param SE Wait Buffer
  * @desc This is a guarenteed amount of waiting frames that occur when checking for SE to end.
@@ -10,7 +10,7 @@
  *
  * Wait Options
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This is a plugin that adds more options for waiting during events.
@@ -140,7 +140,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

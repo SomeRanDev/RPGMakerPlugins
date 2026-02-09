@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Adds an Active Defense that forces the Player to charge up before dodging an attack.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Hit Condition
  * @desc The condition that must be true for the Skill to hit.
@@ -97,7 +97,7 @@
  *
  * Active Defense: Charge
  * Version 1.10
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin adds a new system in side-view battles which allows Players to
@@ -240,7 +240,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var Imported = Imported || {};

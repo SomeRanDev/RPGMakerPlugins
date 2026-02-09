@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows players to have the ability to select from a collection of pictures.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Min Scale
  * @desc The scale of the picture when it is not selected.
@@ -26,7 +26,7 @@
  *
  * Picture Choices
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This is a plugin that allows players to have the ability to select from 
@@ -107,7 +107,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

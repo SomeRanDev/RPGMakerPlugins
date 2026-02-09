@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Pokemon Plugin: Adds the ability to create a special name input for trainers without using an Actor.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Max Characters
  * @desc The maximum amount of characters allowed to be inputted for a name.
@@ -45,7 +45,7 @@
  * 
  * Pokemon Trainer Name Input
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  * 
  * This Plugin allows you to have a name input screen without an Actor.
@@ -115,7 +115,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

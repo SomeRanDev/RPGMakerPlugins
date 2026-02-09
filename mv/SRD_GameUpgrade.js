@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Enables more customization over the core mechanics of one's game while also providing additional functions for future plugins.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Game Window
  * @default ====================================
@@ -185,7 +185,7 @@
  *
  * Game Upgrade
  * Version 1.33
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin enables more customization over the core mechanics of one's game 
@@ -292,7 +292,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

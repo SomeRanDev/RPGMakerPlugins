@@ -1,6 +1,6 @@
 /*:
  * @plugindesc An alternative menu based off of the menu from Final Fantasy 7.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param "To Next Level" Text
  * @desc The text used for the "To Next Level" in the menu.
@@ -70,7 +70,7 @@
  *
  * Alternative Menu Screen: Final Fantasy 7
  * Version 1.02
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Gives your game an alternative menu screen.
@@ -83,7 +83,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  * 
  */

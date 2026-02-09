@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows developers to create bullet-hell dodge systems in their battles; based off of the system from Undertale.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Draw Collision Masks
  * @desc Set this to 'true' and collision masks will be visible.
@@ -337,7 +337,7 @@
  *
  * Undertale Battle System
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Replicates the Bullet-hell system from Undertale.
@@ -667,7 +667,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

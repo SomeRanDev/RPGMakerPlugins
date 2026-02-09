@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows the developer to check for swipe input on the touch screen or through a mouse.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Battle Only
  * @desc If this is set to 'true', then Swipe Input will only be updated during battles.
@@ -22,7 +22,7 @@
  *
  * Swipe Input
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This is a Plugin that allows the developer to check for swipe input on the 
@@ -127,7 +127,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

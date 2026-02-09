@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Sets a specific Player sprite to use on your Player no matter what your party members are.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Start ON?
  * @desc You can disable the Independent Character Sprite throughout the game. Set 'false' to start with it disabled.
@@ -19,7 +19,7 @@
  *
  * Independent Character Sprite
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * ==========================================================================
@@ -81,7 +81,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

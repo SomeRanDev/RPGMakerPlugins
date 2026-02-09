@@ -1,6 +1,6 @@
 /*:
  * @plugindesc (v3.03) This Plugin allows you to have more control over your TP system and have a dynamic Max TP stat.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Minimum Max TP
  * @desc The minimum amount of Max TP an Actor or Enemy may have.
@@ -64,7 +64,7 @@
  *
  * TP Upgrade
  * Version 3.03
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Upgrades the TP System!
@@ -293,7 +293,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

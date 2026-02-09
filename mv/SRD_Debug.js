@@ -1,6 +1,6 @@
 /*:
  * @plugindesc An epic plugin for debugging! Sort of a work in progress, feel free to request anything. (Version 1.00)
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Playtesting Only?
  * @desc Set this to 'true', and this Plugin will lock itself unless you are playtesting within the RPG Maker program.
@@ -268,7 +268,7 @@
  *
  * SumRndmDde's Debug Display
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  * Random Things to Note:
  * - There are no Plugin Commands
@@ -340,7 +340,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() { 

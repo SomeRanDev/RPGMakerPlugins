@@ -1,12 +1,12 @@
 /*:
  * @plugindesc Separates all Windows on to different drawing layers as opposed to having them overwrite each other.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @help
  *
  * Window Layers
  * Version 2.10
- * SumRndmDde
+ * SomeRanDev
  *
  * Make sure you are using RPG Maker MV 1.3.1 or above!
  *
@@ -31,7 +31,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

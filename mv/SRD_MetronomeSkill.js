@@ -1,7 +1,7 @@
 /*:
  * @plugindesc Adds the ability to create and customize Metronome skills.
  * These are skills that randomly call upon other skills.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Use Log Message?
  * @desc Set this to 'false', and a Battle Log Message will not be displayed. Otherwise, set this to 'true'.
@@ -19,7 +19,7 @@
  *
  * Metronome Skill
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Important Notes:
@@ -148,7 +148,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

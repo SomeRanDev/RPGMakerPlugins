@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows you to add Shaking Text to your Show Text events!
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Reset Shaking per Box
  * @desc If this is set to 'true', then all shaking effects will be reset every time the Message Window is cleared.
@@ -38,7 +38,7 @@
  *
  * Shaking Text
  * Version 1.12
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin allows you to add animated text effects to your Show Text 
@@ -101,7 +101,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

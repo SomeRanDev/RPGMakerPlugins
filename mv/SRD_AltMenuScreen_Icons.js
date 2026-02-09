@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Alternative Menu Screen Icon. Uses Icons instead of words. #IconsAreMasterRace
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Item Icon
  * @desc The icon index of the icon used for the "Item" choice.
@@ -327,7 +327,7 @@
  *
  * Alternative Menu Screen: Icons
  * Version 1.02
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Changelog (v1.01): Fixed Actor Window Cancel
@@ -380,7 +380,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

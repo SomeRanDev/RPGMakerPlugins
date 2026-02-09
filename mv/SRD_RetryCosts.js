@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows developers to setup specific costs for the Player to have to pay in order to retry a battle.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Default Gold Cost
  * @desc The default amount of gold it costs to retry.
@@ -46,7 +46,7 @@
  *
  * Retry Costs
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin requires the Game Over Core (SRD_GameOverCore)
@@ -104,7 +104,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

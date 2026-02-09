@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Customize the Window for when the Player uses an Item or Skill in the menu and it requires an Actor to be selected.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Use Default Window
  * @desc If using an Alt Menu Screen, set this to 'true' to revert the window used to select an Actor to the default one.
@@ -52,7 +52,7 @@
  *
  * In-Menu Usage Upgrade
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin allows you to customize the Window for when the Player uses 
@@ -81,7 +81,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

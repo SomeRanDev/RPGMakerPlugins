@@ -2,7 +2,7 @@
  * @target MZ
  * @plugindesc Allows for maps to be mixed together!
  * @author SomeRanDev
- * @url https://youtube.com/@SomeRanDev
+ * @url https://someran.dev/links
  * 
  * @command SetMapMixedRectangle
  * @text Set Map Mixed Rectangle
@@ -141,13 +141,13 @@
  *  Terms of Use
  * ============================================================================
  *
- * http://sumrndm.site/terms-of-use/
+ * https://someran.dev/rpgmaker/terms/
  *
  * ============================================================================
  *  End of Help File
  * ============================================================================
  *
- * https://www.youtube.com/@SumRndmDde (good content)
+ * https://someran.dev/youtube (good content)
  * https://twitch.tv/SomeRanDev (livestreams maybe)
  * https://bsky.app/profile/someran.dev (active gamedev posts maybe)
  * http://sumrndm.site

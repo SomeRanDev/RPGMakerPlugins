@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Upgrades and adds various features to the existing window system within one's game.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Info Windows
  * @type Struct<InfoWindows>[]
@@ -41,7 +41,7 @@
  *
  * Window Upgrade
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin requires the Game Upgrade plugin:
@@ -198,7 +198,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

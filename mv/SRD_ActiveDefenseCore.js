@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Adds a system that allows the Actors to dodge or counter Enemy attacks through the use of active inputs.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Reposition Animation
  * @desc Set this to true to have the animations repositioned on Actors.
@@ -70,7 +70,7 @@
  *
  * Active Defense Core
  * Version 1.20
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin adds a new system in side-view battles which allows Players to
@@ -191,7 +191,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 var SRD = SRD || {};

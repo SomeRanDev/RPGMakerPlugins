@@ -1,13 +1,13 @@
 /*:
  * @plugindesc Allows you to have unique Guard Skills for your Weapons. Based off of "WeaponSkill" by Sasuke KANNAZUKI.
  *
- * @author SumRndmDde (Used code from Sasuke KANNAZUKI)
+ * @author SomeRanDev (Used code from Sasuke KANNAZUKI)
  *
  * @help
  *
  * Weapon Guard Skill
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Important Notes:
@@ -39,7 +39,7 @@
  * https://www.youtube.com/SumRndmDde
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows you to create a Shop that turns ON Switches when something is purchased from the Shop.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Help Window Lines
  * @desc The amount of lines the Help Window for the Switch Shop is.
@@ -14,7 +14,7 @@
  *
  * Switch Shop
  * Version 1.01
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This Plugin allows you to set up a Shop for the Player.
@@ -80,7 +80,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 

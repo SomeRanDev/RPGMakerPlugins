@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Alternative Menu Screen Phantasia. An alternative menu based off of Tales of Phantasia.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param "Play Time" Text
  * @desc The text used for the "play time" in the menu.
@@ -36,7 +36,7 @@
  *
  * Alternative Menu Screen: Phantasia
  * Version 1.02
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * Changelog (v1.02): Fixed Shop Choices
@@ -49,7 +49,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  */
 
 (function() {

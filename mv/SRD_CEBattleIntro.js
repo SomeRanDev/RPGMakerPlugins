@@ -1,6 +1,6 @@
 /*:
  * @plugindesc Allows you to use a Common Event as your battle intro.
- * @author SumRndmDde
+ * @author SomeRanDev
  *
  * @param Common Event ID
  * @desc This is the ID of the Common Event used for the Battle Intro when the game starts.
@@ -18,7 +18,7 @@
  *
  * Common Event Battle Intro
  * Version 1.00
- * SumRndmDde
+ * SomeRanDev
  *
  *
  * This plugin allows you to have a Common Event run as your battle intro.
@@ -107,7 +107,7 @@
  *
  *
  * Until next time,
- *   ~ SumRndmDde
+ *   ~ SomeRanDev
  *
  */
 
