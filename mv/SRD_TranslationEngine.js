@@ -33,7 +33,7 @@
  * @help
  * ===========================================================================
  *                              Translation Engine
- *                                 Version 1.04
+ *                                 Version 1.05
  *                                  SumRndmDde
  * ===========================================================================
  *
@@ -394,7 +394,7 @@ var SRD = SRD || {};
 SRD.TranslationEngine = SRD.TranslationEngine || {};
 
 var Imported = Imported || {};
-Imported["SumRndmDde Translation Engine"] = 1.04;
+Imported["SumRndmDde Translation Engine"] = 1.05;
 
 //-----------------------------------------------------------------------------
 // $dataTranslations is the variable counterpart of "Translations.json"
@@ -1764,7 +1764,7 @@ Window_Options.prototype.statusText = function(index) {
 };
 
 Window_Options.prototype.languageStatusText = function(value) {
-	return value === 0 ? 'English' : $.languages[value - 1];
+	return value === 0 ? $.sourceName : $.languages[value - 1];
 };
 
 Window_Options.prototype.incrementLanguage = function(value, symbol) {
