@@ -636,7 +636,7 @@ Game_Interpreter.prototype.pluginCommand = function(command, args) {
 	_Game_Interpreter_pluginCommand.apply(this, arguments);
 	if(command.trim().toLowerCase() === 'setbattlestatusparts') {
 		const actorId = parseInt(args[0])
-		const result = '';
+		let result = '';
 		for(let i = 1; i < args.length; i++) {
 			result += args[i] + ' ';
 		}
