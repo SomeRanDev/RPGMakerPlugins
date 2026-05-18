@@ -184,7 +184,7 @@
  * @help
  *
  * Game Upgrade
- * Version 1.33
+ * Version 1.34
  * SomeRanDev
  *
  *
@@ -276,6 +276,13 @@
  *
  * Sets the window's progress bar to the value defined by "ratio".
  *
+ *
+ * ==============================================================================
+ *  End of Help File
+ * ==============================================================================
+ * 
+ * 1.34
+ * Fixed versions comparisons and compatibility with newest versions of NW.js.
  *
  * ==============================================================================
  *  End of Help File
@@ -486,7 +493,7 @@ SRD.requirePlugin = function(name, filename, requiredname, link, version) {
  */
 
 SRD.requireVersion = function(filename, version) {
-	if(Utils.RPGMAKER_VERSION && Utils.RPGMAKER_VERSION >= version) {
+	if(Utils.RPGMAKER_VERSION && SRD.isVersionGreaterThanOrEqual(Utils.RPGMAKER_VERSION, version)) {
 		return false;
 	} else {
 		SRD.Requirements.push(['project', filename, version]);
@@ -521,6 +528,32 @@ SRD.onWindowLoad = function() {
 	if(SRD.isPlaytest) {
 		SRD.checkRequirements();
 	}
+};
+
+/*
+ * Checks if a version string is newer than another one.
+ */
+
+SRD.isVersionGreaterThanOrEqual = function(version, isGreaterThanThis) {
+	function parseVersionNumbers(v) {
+		return v.split('.').map(function(n) {
+			const n2 = parseInt(n.trim());
+			return isNaN(n2) ? -1 : n2;
+		});
+	}
+
+	const v1 = parseVersionNumbers(version);
+	const v2 = parseVersionNumbers(isGreaterThanThis);
+	
+	for(let i = 0; i < Math.max(v1.length, v2.length); i++) {
+		const num1 = v1[i] || -1;
+		const num2 = v2[i] || -1;
+		if(num1 !== num2) {
+			return num1 > num2;
+		}
+	}
+
+	return true;
 };
 
 //-----------------------------------------------------------------------------
@@ -601,7 +634,7 @@ _.params['Decrypter Ignore List'].forEach(function(url, i, array) {
 	array[i] = 'img/' + url;
 });
 
-_.isNewNWjs = process.versions['node-webkit'] >= "0.13.0" && Utils.RPGMAKER_VERSION >= "1.6.0";
+_.isNewNWjs = SRD.isVersionGreaterThanOrEqual(process.versions['node-webkit'], "0.13.0");
 
 //-----------------------------------------------------------------------------
 // SRD.GameUpgrade.windowSettings
